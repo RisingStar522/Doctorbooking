@@ -1,0 +1,11 @@
+.align-input {
+    padding: 5px 8px;
+}
+.calendar {
+    border-left: 0px;
+    border-color: #dcdcdc;
+    padding-right: 20px;
+}
+.align-input {
+    border-right: 0px;
+}

@@ -1,0 +1,147 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "doccur": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/doccur",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/select2/dist/css/select2.min.css",
+              "node_modules/ng2-daterangepicker/assets/daterangepicker.css",
+              "node_modules/fullcalendar/main.min.css",
+              "node_modules/morris.js/morris.css"
+            ],
+            "scripts": [  
+              "node_modules/jquery/dist/jquery.min.js",  
+              "node_modules/bootstrap/dist/js/bootstrap.min.js", 
+              "src/assets/js/popper.min.js", 
+              "node_modules/datatables.net/js/jquery.dataTables.js",             
+              "node_modules/moment/min/moment.min.js",             
+              "./src/assets/js/circle-progress.min.js",
+              "./src/assets/admin/plugins/slimscroll/jquery.slimscroll.min.js",                         
+              "./src/assets/js/script.js",
+              "node_modules/select2/dist/js/select2.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js",              
+              "node_modules/fullcalendar/main.min.js",
+              "node_modules/raphael/raphael.js", 
+              "node_modules/morris.js/morris.js"          
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "500kb",
+                  "maximumError": "500kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "doccur:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "doccur:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "doccur:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/ngx-toastr/toastr.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "doccur:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "doccur:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "doccur",
+  "cli": {
+    "analytics": false
+  }
+}

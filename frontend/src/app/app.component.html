@@ -1,0 +1,364 @@
+<div class="main-wrapper">
+<app-header [hidden]="!show"></app-header>
+<router-outlet></router-outlet>
+<app-footer *ngIf="loadFooter" [hidden]="hideFooter"></app-footer>
+</div>
+<!-- Voice Call Modal -->
+<div class="modal fade call-modal" id="voice_call">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+			
+				<!-- Outgoing Call -->
+				<div class="call-box incoming-box">
+					<div class="call-wrapper">
+						<div class="call-inner">
+							<div class="call-user">
+								<img alt="User Image" src="assets/img/patients/patient.jpg" class="call-avatar">
+								<h4>Richard Wilson</h4>
+								<span>Connecting...</span>
+							</div>							
+							<div class="call-items">
+								<a href="javascript:void(0);" class="btn call-item call-end" data-dismiss="modal" aria-label="Close"><i class="material-icons">call_end</i></a>
+								<a [routerLink]="'/voice-call'" class="btn call-item call-start"  data-dismiss="modal" aria-label="Close"><i class="material-icons">call</i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Outgoing Call -->
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Voice Call Modal -->
+		
+<!-- Video Call Modal -->
+<div class="modal fade call-modal" id="video_call">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+			
+				<!-- Incoming Call -->
+				<div class="call-box incoming-box">
+					<div class="call-wrapper">
+						<div class="call-inner">
+							<div class="call-user">
+								<img class="call-avatar" src="assets/img/patients/patient.jpg" alt="User Image">
+								<h4>Richard Wilson</h4>
+								<span>Calling ...</span>
+							</div>							
+							<div class="call-items">
+								<a href="javascript:void(0);" class="btn call-item call-end" data-dismiss="modal" aria-label="Close"><i class="material-icons">call_end</i></a>
+								<a [routerLink]="'/video-call'" class="btn call-item call-start"  data-dismiss="modal" aria-label="Close"><i class="material-icons">videocam</i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Incoming Call -->
+				
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Video Call Modal -->
+
+<!-- Add Time Slot Modal -->
+<div class="modal fade custom-modal" id="add_time_slot">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add Time Slots</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="hours-info">
+						<div class="row form-row hours-cont">
+							<div class="col-12 col-md-10">
+								<div class="row form-row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>Start Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option>12.30 am</option>  
+												<option>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div> 
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>End Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option>12.30 am</option>  
+												<option>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="add-more mb-3">
+						<a href="javascript:void(0);" class="add-hours"><i class="fa fa-plus-circle"></i> Add More</a>
+					</div>
+					<div class="submit-section text-center">
+						<button type="submit" class="btn btn-primary submit-btn" data-dismiss="modal" aria-label="Close">Save Changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add Time Slot Modal -->
+
+<!-- Edit Time Slot Modal -->
+<div class="modal fade custom-modal" id="edit_time_slot">
+
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Edit Time Slots</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="hours-info">
+						<div class="row form-row hours-cont">
+							<div class="col-12 col-md-10">
+								<div class="row form-row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>Start Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option selected>12.00 am</option>
+												<option>12.30 am</option>  
+												<option>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div> 
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>End Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option selected>12.30 am</option>  
+												<option>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div> 
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row form-row hours-cont">
+							<div class="col-12 col-md-10">
+								<div class="row form-row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>Start Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option selected>12.30 am</option>
+												<option>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>End Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option>12.30 am</option>
+												<option selected>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-2"><label class="d-md-block d-sm-none d-none">&nbsp;</label><a href="javascript:void(0);" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a></div>
+						</div>
+						
+						<div class="row form-row hours-cont">
+							<div class="col-12 col-md-10">
+								<div class="row form-row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>Start Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option>12.30 am</option>
+												<option selected>1.00 am</option>
+												<option>1.30 am</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label>End Time</label>
+											<select class="form-control">
+												<option>-</option>
+												<option>12.00 am</option>
+												<option>12.30 am</option>
+												<option>1.00 am</option>
+												<option selected>1.30 am</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-2"><label class="d-md-block d-sm-none d-none">&nbsp;</label><a href="javascript:void(0);" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a></div>
+						</div>
+
+					</div>
+					
+					<div class="add-more mb-3">
+						<a href="javascript:void(0);" class="add-hours"><i class="fa fa-plus-circle"></i> Add More</a>
+					</div>
+					<div class="submit-section text-center">
+						<button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Edit Time Slot Modal -->
+
+<!-- Add Medical Records Modal -->
+<div class="modal fade custom-modal" id="add_medical_records">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Medical Records</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form>					
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" class="form-control datetimepicker" value="31-10-2019">
+                    </div>
+                    <div class="form-group">
+                        <label>Description ( Optional )</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload File</label> 
+                        <input type="file" class="form-control">
+                    </div>	
+                    <div class="submit-section text-center">
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        <button type="button" class="btn btn-secondary submit-btn" data-dismiss="modal">Cancel</button>							
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /Add Medical Records Modal -->
+
+<!-- Add Event Modal -->
+<div id="add_event" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Event Name <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Event Date <span class="text-danger">*</span></label>
+                        <div class="cal-icon">
+                            <input class="form-control datetimepicker" type="text">
+                        </div>
+                    </div>
+                    <div class="submit-section">
+                        <button class="btn btn-primary submit-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add Event Modal -->
+
+<!-- Add Event Modal -->
+<div class="modal fade none-border" id="my_event">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Event</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success save-event submit-btn">Create event</button>
+                <button type="button" class="btn btn-danger delete-event submit-btn" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add Event Modal -->
+
+<!-- Add Category Modal -->
+<div class="modal fade" id="add_new_event">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Category</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
+                    </div>
+                    <div class="form-group mb-0">
+                        <label>Choose Category Color</label>
+                        <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
+                            <option value="success">Success</option>
+                            <option value="danger">Danger</option>
+                            <option value="info">Info</option>
+                            <option value="primary">Primary</option>
+                            <option value="warning">Warning</option>
+                            <option value="inverse">Inverse</option>
+                        </select>
+                    </div>
+                    <div class="submit-section">
+                        <button type="button" class="btn btn-primary save-category submit-btn" data-dismiss="modal">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add Category Modal -->

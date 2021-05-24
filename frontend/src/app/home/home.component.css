@@ -1,0 +1,114 @@
+.ng-autocomplete {
+  width:100%;
+  max-width: 600px;
+  display: table;
+  margin: 0 auto;
+}
+.autocomplete-container {
+	box-shadow: none !important;
+}
+.client-navbtn button{
+  background:transparent;
+  border:0;
+}
+.client-navbtn i{
+  font-size: 55px;
+  line-height: 24px;
+  color:#FB6C42;
+}
+.desc-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.autocomplete-container .input-container input {
+  height: auto !important;
+}
+
+/*Home page - testi section*/
+
+.slick-dots {
+  bottom: 0px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: transparent;
+}
+
+.slick-dots li button:before {
+  background-color: #FFC400;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  color: transparent;
+}
+
+.testi-info-wrapper .testi-slider .testi-card {
+  border-radius: 10px;
+  background: #ffffff;
+  margin-bottom: 68px;
+}
+.client-slide{
+  background-color:#fff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 10px;
+}
+.content-blk p{
+  padding: 7px 13px 15px;
+  font-size: 15px;
+  line-height: 24px;
+}
+.author-info-blk p{
+  font-size: 16px;
+  color: #000;
+}
+
+.testi-info-wrapper .testi-slider .testi-card .author-info-blk p {
+  font-weight: 500;
+}
+
+.testi-info-wrapper .testi-slider .testi-card .author-info-blk small {
+  color: #858585;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: -60px;
+  font-size: 40px;
+  padding: 0;
+  width: 43px;
+  height: 43px;
+  border: 2px solid #F7CD2D;
+  background: #ffffff;
+  color: #F7CD2D;
+  border-radius: 3px;
+  line-height: 1;
+  right: 0;
+  outline: none;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.slick-arrow:hover,
+.slick-arrow:focus {
+  border-color: #F7CD2D;
+  background: #F7CD2D;
+  color: #ffffff;
+}
+
+.testi-slider .prev-nav {
+  left: 44%;
+  top: auto;
+  bottom: -7px;
+}
+
+.testi-slider .next-nav {
+  right: 44%;
+  top: auto;
+  bottom: -7px;
+}

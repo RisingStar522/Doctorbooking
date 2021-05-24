@@ -1,0 +1,92 @@
+
+                
+    <!-- Profile Sidebar -->
+    <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+            <div class="profile-info-widget">
+                <a href="javascript:void(0)" class="booking-doc-img">
+                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                </a>
+                <div class="profile-det-info">
+                    <h3>Dr. Darren Elder</h3>
+                    
+                    <div class="patient-details">
+                        <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-widget">
+            <nav class="dashboard-menu">
+                <ul>
+                    <li [class.active]="name === 'Dashboard' || page === 'dashboard'"  (click)="navigate('Dashboard')">
+                        <a  [routerLink]="'dashboard'" >
+                            <i class="fas fa-columns"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li [class.active]="name === 'Appointments' || page === 'appointment'" (click)="navigate('Appointments')"  >
+                        <a [routerLink]="'appointment'">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'My Patients' || page === 'patients'"  (click)="navigate('My Patients')" >
+                        <a [routerLink]="'patients'">
+                            <i class="fas fa-user-injured"></i>
+                            <span>My Patients</span>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'Schedule Timings' || page === 'scheduletiming'" (click)="navigate('Schedule Timings')" >
+                        <a  [routerLink]="'scheduletiming'">
+                            <i class="fas fa-hourglass-start"></i>
+                            <span>Schedule Timings</span>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'Invoices' || page === 'invoice'" (click)="navigate('Invoices')">
+                        <a   [routerLink]="'invoice'">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Invoices</span>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'Reviews'  || page === 'reviews'" (click)="navigate('Reviews')">
+                        <a   [routerLink]="'reviews'">
+                            <i class="fas fa-star"></i>
+                            <span>Reviews</span>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'Message' || page === 'message'" (click)="navigate('Message')">
+                        <a   [routerLink]="'message'">
+                            <i class="fas fa-comments"></i>
+                            <span>Message</span>
+                            <small class="unread-msg">23</small>
+                        </a>
+                    </li>
+                    <li  [class.active]="name === 'Profile Settings' || page === 'settings'" (click)="navigate('Profile Settings')" >
+                        <a  [routerLink]="'settings'">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Profile Settings</span>
+                        </a>
+                    </li>
+                    <li [class.active]="name === 'Social Media'" (click)="navigate('Social Media')">
+                        <a [routerLink]="'social-media'">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Social Media</span>
+                        </a>
+                    </li>
+                    <li [class.active]="name === 'Change Password'" (click)="navigate('Change Password')">
+                        <a [routerLink]="'/change-password'">
+                            <i class="fas fa-lock"></i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="logout()" style="cursor: pointer;">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>

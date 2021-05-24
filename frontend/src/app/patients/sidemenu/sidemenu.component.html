@@ -1,0 +1,60 @@
+<div class="profile-sidebar">
+	<div class="widget-profile pro-widget-content">
+		<div class="profile-info-widget">
+			<a href="javascript:void(0)" class="booking-doc-img">
+				<img src="assets/img/patients/patient.jpg" alt="User Image">
+			</a>
+			<div class="profile-det-info">
+				<h3>Richard Wilson</h3>
+				<div class="patient-details">
+					<h5><i class="fas fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
+					<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dashboard-widget">
+		<nav class="dashboard-menu">
+			<ul>
+				<li [class.active]="name === 'Dashboard'">
+					<a [routerLink]="'dashboard'" (click)="navigate('Dashboard')">
+						<i class="fas fa-columns"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>
+				<li [class.active]="name === 'Favourites'">
+					<a (click)="navigate('Favourites')" [routerLink]="'favourites'">
+						<i class="fas fa-bookmark"></i>
+						<span>Favorites</span>
+					</a>
+				</li>
+				<li [class.active]="name === 'message'">
+					<a [routerLink]="'message'">
+						<i class="fas fa-comments"></i>
+						<span>Message</span>
+						<small class="unread-msg">23</small>
+					</a>
+				</li>
+				<li [class.active]="name === 'Profile Settings'">
+					<a (click)="navigate('Profile Settings')" [routerLink]="'settings'">
+						<i class="fas fa-user-cog"></i>
+						<span>Profile Settings</span>
+					</a>
+				</li>
+				<li>
+					<a [routerLink]="'/change-password'">
+						<i class="fas fa-lock"></i>
+						<span>Change Password</span>
+					</a>
+				</li>
+				<li >
+					<a  (click)="logout()" style="cursor: pointer;">
+						<i class="fas fa-sign-out-alt"></i>
+						<span>Logout</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+</div>

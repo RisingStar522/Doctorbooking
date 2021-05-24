@@ -1,0 +1,65 @@
+<div class="appointments">
+							
+    <!-- Appointment List -->
+    <div class="appointment-list" *ngFor="let patient of patients">
+        <div class="profile-info-widget">
+            <a class="booking-doc-img">
+                <img [src]="patient.img" alt="User Image">
+            </a>
+            <div class="profile-det-info">
+                <h3><a >{{patient?.name}}</a></h3>
+                <div class="patient-details">
+                    <h5><i class="far fa-clock"></i> 14 Nov 2019, 10.00 AM</h5>
+                    <h5><i class="fas fa-map-marker-alt"></i> {{patient?.address}}</h5>
+                    <h5><i class="fas fa-envelope"></i> {{patient.email}}</h5>
+                    <h5 class="mb-0"><i class="fas fa-phone"></i> {{patient.phone}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="appointment-action">
+            <a href="javascript:void(0)" class="btn btn-sm bg-info-light" data-toggle="modal" data-target="#appt_details">
+                <i class="far fa-eye"></i> View
+            </a>
+            <a (click)="openModal(template,patient)" class="btn btn-sm bg-success-light">
+                <i class="fas fa-check"></i> Accept
+            </a>
+            <a (click)="openModal(Declinetemplate,patient)" class="btn btn-sm bg-danger-light">
+                <i class="fas fa-times"></i> Cancel
+            </a>
+        </div>
+    </div>
+    <!-- /Appointment List -->
+
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Accept</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      Are you sure want to accept this patient?
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-default" id="btn-yes" (mouseover)="btnColor()" (click)="modalRef.hide()" >Yes</button>
+        <button type="button" class="btn btn-primary" id="btn-no" (mouseover)="btnColorNo()" (click)="modalRef.hide()" >No</button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #Declinetemplate>
+    <div class="modal-header">
+     <h4 class="modal-title pull-left">Decline</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      Are you sure want to cancel this patient?
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-default" id="btn-yes" (mouseover)="btnColor()" (click)="modalRef.hide()" >Yes</button>
+        <button type="button" class="btn btn-primary" id="btn-no" (mouseover)="btnColorNo()" (click)="modalRef.hide()" >No</button>
+     </div>
+    </div>
+  </ng-template>

@@ -1,0 +1,87 @@
+<div class="page-wrapper">
+	<div class="content container-fluid">			
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-7 col-auto">
+					<h3 class="page-title">Products</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+						<li class="breadcrumb-item active">Products</li>
+					</ul>
+				</div>
+				<div class="col-sm-5 col">
+					<a [routerLink]="'/pharmacy-admin/add-product'" class="btn btn-primary float-right mt-2">Add New</a>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		<div class="row">
+			<div class="col-md-12">						
+				<!-- Recent Orders -->
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="row-border hover table table-hover table-center mb-0">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Product Name</th>
+										<th>Category</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Discount</th>
+										<th>Expire</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let product of products">
+										<td>{{product.id}}</td>
+										<td>
+											<h2 class="table-avatar">
+												<span class="avatar avatar-sm mr-2"><img class="avatar-img" src="{{product.img}}" alt="product image"></span>
+												{{product.name}}
+											</h2>
+										</td>
+										<td>{{product.category}}</td>
+										<td>${{product.price}}</td>
+										<td>{{product.quantity}}</td>
+										<td>{{product.discount}}%</td>
+										<td><span class="btn btn-sm bg-danger-light">{{product.expire}}</span></td>
+										<td>
+											<div class="actions">
+												<a class="btn btn-sm bg-success-light" [routerLink]="'/pharmacy-admin/edit-product'">
+													<i class="fe fe-pencil"></i> Edit
+												</a>
+												<a data-toggle="modal" (click)="deleteModal(delete,product)" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#deleteConfirmModal">
+													<i class="fe fe-trash"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /Recent Orders -->						
+				</div>
+			</div>
+		</div>			
+</div>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteProduct()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>

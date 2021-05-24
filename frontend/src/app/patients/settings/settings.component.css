@@ -1,0 +1,11 @@
+.submit-section .submit-btn {
+    padding: 12px 30px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    min-width: 120px !important; 
+}
+
+.btn-primary {
+    background-color: #09e5ab !important;
+    border: 1px solid #09e5ab !important;
+}

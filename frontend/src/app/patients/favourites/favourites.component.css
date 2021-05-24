@@ -1,0 +1,23 @@
+.view-btn {
+    color: #0de0fe;
+    font-size: 13px;
+    border: 2px solid #0de0fe;
+    text-align: center;
+    display: block;
+    font-weight: 500;
+    padding: 6px;
+}
+.book-btn {
+    background-color: #0de0fe;
+    border: 2px solid #0de0fe;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    display: block;
+    font-weight: 500;
+    padding: 6px;
+}
+.favorite {
+    background: #fb1612;
+    color: #fff;
+}

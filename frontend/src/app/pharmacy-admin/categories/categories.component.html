@@ -1,0 +1,125 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+    
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-7 col-auto">
+                    <h3 class="page-title">Categories</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Categories</li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 col">
+                    <a data-toggle="modal" (click)="openModal(addtemplate)" class="btn btn-primary float-right mt-2">Add</a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="datatable table table-hover table-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Created date</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let category of categories">
+                                        <td>{{category.id}}</td>                                        
+                                        <td><h2 class="table-avatar">	
+                                                {{category.name}}
+                                            </h2>
+                                        </td>                                        
+                                        <td>{{category.created_date | date: 'd-MMMM-y-h:mm a'}}</td>
+                                        <td class="text-right">
+                                            <div class="actions">
+                                                <a class="btn btn-sm bg-success-light" data-toggle="modal" (click)="editModal(edittemplate,category)">
+                                                    <i class="fe fe-pencil"></i> Edit
+                                                </a>
+                                                <a data-toggle="modal" (click)="deleteModal(delete,category)"
+                                                    class="btn btn-sm bg-danger-light">
+                                                    <i class="fe fe-trash"></i> Delete
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>			
+        </div>
+    </div>			
+</div>
+<!-- /Page Wrapper -->
+<ng-template #addtemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Category</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <form>
+            <div class="row form-row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>                
+            </div>
+        </form>
+        <div style="margin-top:25px">
+            <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="save()" >Add Category</button>
+            <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >Cancel</button>
+          </div>
+    </div>
+</ng-template>
+<ng-template #edittemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Category</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <form>
+            <div class="row form-row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>                
+            </div>
+        </form>
+        <div style="margin-top:25px">
+            <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="update()" >Update</button>
+            <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >Cancel</button>
+          </div>
+    </div>
+</ng-template>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes"  >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>

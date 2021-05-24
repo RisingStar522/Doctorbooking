@@ -1,0 +1,38 @@
+<div class="row row-grid">
+    <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let patient of patients" [hidden]="patients.length === 0">
+        <div class="card widget-profile pat-widget-profile">
+            <div class="card-body">
+                <div class="pro-widget-content">
+                    <div class="profile-info-widget">
+                        <a class="booking-doc-img">
+                            <img [src]="patient.img" alt="User Image">
+                        </a>
+                        <div class="profile-det-info">
+                            <h3><a >{{patient.name}}</a></h3>
+                            
+                            <div class="patient-details">
+                                <h5><b>Patient ID :</b> {{patient.key}}</h5>
+                                <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{patient.address}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="patient-info">
+                    <ul>
+                        <li>Phone <span>+{{patient.phone}}</span></li>
+                        <li>Age <span>{{patient.age}} Years, {{patient.patients?.type}}</span></li>
+                        <li>Blood Group <span>{{patient.bloodgroup}}</span></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ 
+            <!--  <h4 *ngIf="appointments.length === 0" style="text-align:center;margin-top:1em;">No patients</h4 -->
+          
+    
+   
+    
+</div>

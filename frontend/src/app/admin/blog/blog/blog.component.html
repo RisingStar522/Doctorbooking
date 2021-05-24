@@ -1,0 +1,189 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+    
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Blog</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:(0);">Pages</a></li>
+                        <li class="breadcrumb-item active">Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                        
+                    <div class="row mb-5">
+                        <div class="col">
+                            <ul class="nav nav-tabs nav-tabs-solid">
+                                <li class="nav-item">
+                                    <a class="nav-link active" [routerLink]="'/admin/blog'">Acitive Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="'/admin/pending-blog'">Pending Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-primary btn-sm" [routerLink]="'/admin/add-blog'"><i class="fas fa-plus mr-1"></i> Add Blog</a>
+                        </div>
+                    </div>
+                
+                    <!-- Blog -->
+                    <div class="row blog-grid-row">
+
+                        <div class="col-md-6 col-xl-4 col-sm-12" *ngFor="let blog of blogs">                        
+                            <!-- Blog Post -->
+                            <div class="blog grid-blog">
+                                <div class="blog-image">
+                                    <a href="javascript:void(0)"><img class="img-fluid" src="{{blog.img}}" alt="Post Image"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <ul class="entry-meta meta-item">
+                                        <li>
+                                            <div class="post-author">
+                                                <a [routerLink]="'/admin/doc-profile'"><img src="{{blog.doctor_pic}}" alt="Post Author"> <span>Dr. Ruby Perrin</span></a>
+                                            </div>
+                                        </li>
+                                        <li><i class="far fa-clock">{{blog.createdAt | date: 'd-MMMM-y'}}</i></li>
+                                    </ul>
+                                    <h3 class="blog-title"><a href="javascript:void(0)">{{blog.title}}</a></h3>
+                                    <p class="mb-0">{{blog.description}}</p>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col"><a [routerLink]="'/admin/edit-blog'" class="text-success"><i class="far fa-edit"></i> Edit</a></div>
+                                                                                                
+                                    <div class="col text-right"><a href="javascript:void(0);" class="text-danger" data-toggle="modal" data-target="#deleteNotConfirmModal"><i class="far fa-trash-alt"></i> Inactive</a></div>
+                                </div>
+                            </div>
+                            <!-- /Blog Post -->
+                            
+                        </div>
+                    </div>
+                
+                    <!-- Blog Pagination -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="blog-pagination">
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="javascript:void(0)" tabindex="-1"><i class="fas fa-angle-double-left"></i></a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0)">1</a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0)">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0)"><i class="fas fa-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Blog Pagination -->
+                    <!-- /Blog -->
+            </div>			
+        </div>
+        
+    </div>			
+</div>
+<!-- /Page Wrapper -->
+
+<ng-template #template>
+    <div class="modal-header">
+        <h5 class="modal-title">Add Blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row form-row">
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="speciality">
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" name="speciality">
+                    </div>
+                </div>
+                 <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" class="form-control" name="type">
+                    </div>
+                </div>
+                
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #edittemplate>
+    <div class="modal-header">
+        <h5 class="modal-title">Edit Blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row form-row">
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="speciality">
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" name="speciality">
+                    </div>
+                </div>
+                 <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" class="form-control" name="type">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Edit</button>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #delete>
+    <div class="modal-header">
+        <h5 class="modal-title">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+      Are you sure want to delete this speciality?
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-default">Yes</button>
+        <button type="button" class="btn btn-primary" >No</button>
+      </div>
+    </div>
+</ng-template>

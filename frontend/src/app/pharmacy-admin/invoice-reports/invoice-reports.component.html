@@ -1,0 +1,143 @@
+<div class="page-wrapper">
+	<div class="content container-fluid">
+	
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 class="page-title">Invoice Report</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+						<li class="breadcrumb-item active">Invoice Report</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="datatable table table-hover table-center mb-0">
+								<thead>
+									<tr>
+										<th>Invoice Number</th>
+										<th>Medicine Name</th>
+										<th>Total Amount</th>
+										<th>Created Date</th>
+										<th class="text-center">Status</th>
+										<th class="text-right">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let transaction of transactions">
+										<td class="sorting_1"><a [routerLink]="'/pharmacy-admin/invoice'">{{transaction.invoice_number}}</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<span class="avatar avatar-sm mr-2"><img class="avatar-img" src="{{transaction.medicine_img}}" alt="Product Image"></span>
+												{{transaction.medicine_name}}	
+											</h2>
+										</td>
+										<td>${{transaction.total_amount}}</td>
+										<td>{{transaction.created_date | date: 'd-MMMM-y'}}</td>
+										<td class="text-center">
+											<span class="badge badge-pill bg-success inv-badge">{{transaction.status}}</span>
+										</td>
+										<td class="text-right">
+											<div class="actions">												
+												<a class="btn btn-sm bg-success-light" data-toggle="modal" (click)="editModal(edittemplate,transaction)">
+                                                    <i class="fe fe-pencil"></i> Edit
+                                                </a>
+                                                <a data-toggle="modal" (click)="deleteModal(delete,transaction)"
+                                                    class="btn btn-sm bg-danger-light">
+                                                    <i class="fe fe-trash"></i> Delete
+                                                </a>
+											</div>
+										</td>
+									</tr>									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+		
+	</div>			
+</div>
+<!-- /Page Wrapper -->
+<ng-template #edittemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Invoice</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <form>
+			<div class="row form-row">
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Invoice Number</label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Medicine Image</label>
+						<input type="file"  class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Medicine Name</label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<input type="text"  class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Status <span class="text-danger">*</span></label>
+						<select class="form-control select" name="category" required=""> 
+							<option value="1" selected="selected">Paid</option>
+							<option value="2">Unpaid</option>
+							<option value="3">Pending</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Created Date</label>
+						<input type="text"  class="form-control">
+					</div>
+				</div>				
+			</div>
+		</form>
+        <div style="margin-top:25px">
+            <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="update()" >Update</button>
+            <button type="button" class="btn btn-danger si_accept_cancel" >Cancel</button>
+          </div>
+    </div>
+</ng-template>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteReport()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel"  >No</button>
+      </div>
+    </div>
+</ng-template>

@@ -1,0 +1,906 @@
+<!-- Page Content -->
+<div class="content" id="content">
+    <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 order-md-last order-sm-last order-last map-left">
+    
+            <div class="row align-items-center mb-4">
+                <div class="col-md-6 col">
+                    <h4>2245 Doctors found</h4>
+                </div>
+
+                <div class="col-md-6 col-auto">
+                    <div class="view-icons ">
+                        <a (click)="mapGridClick()" id="grid-view" class="grid-view active"><i class="fas fa-th-large"></i></a>
+                        <a (click)="mapListClick()" id="list-view" class="list-view"><i class="fas fa-bars"></i></a>
+                    </div>
+                    <div class="sort-by d-sm-block d-none">
+                        <span class="sortby-fliter">
+                            <ng-select2  width="100%">
+                                <option>Select</option>
+                                    <option class="sorting">Rating</option>
+                                    <option class="sorting">Popular</option>
+                                    <option class="sorting">Latest</option>
+                                    <option class="sorting">Free</option>
+                            </ng-select2>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="mapGrid">
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-01.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Ruby Perrin</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <span class="d-inline-block average-rating">(17)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Florida, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $300 - $1000 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-02.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Darren Elder</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(35)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Newyork, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $50 - $300 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-03.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Deborah Angel</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MD - General Medicine, DNB - Cardiology</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(27)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Georgia, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>                                    
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-04.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Sofia Brient</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MS - General Surgery, MCh - Urology</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(4)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Louisiana, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $150 - $250 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-05.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Marvin Campbell</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MD - Ophthalmology, DNB - Ophthalmology</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(66)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Michigan, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $50 - $700 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-06.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Katharine Berthold</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MS - Orthopaedics, MBBS, M.Ch - Orthopaedics</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(52)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Texas, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $100 - $500 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-07.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Linda Tobin</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MD - General Medicine, DM - Neurology</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(43)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Kansas, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $100 - $1000 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-08.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Paul Richard</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MD - Dermatology , Venereology & Lepros</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(49)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> California, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-09.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. John Gibbs</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(112)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Oklahoma, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $500 - $2500 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-10.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Olga Barlow</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(65)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Montana, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $75 - $250 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-11.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Julia Washington</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MD - General Medicine, DM - Endocrinology</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(5)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Oklahoma, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $275 - $450 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-4 col-xl-6">
+                    <div class="profile-widget">
+                        <div class="doc-img">
+                            <a [routerLink]="'/patients/doctor-profile'">
+                                <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-12.jpg">
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
+                        <div class="pro-content">
+                            <h3 class="title">
+                                <a [routerLink]="'/patients/doctor-profile'">Dr. Shaun Aponte</a> 
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">MBBS, MS - ENT, Diploma in Otorhinolaryngology (DLO)</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="d-inline-block average-rating">(5)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i> Indiana, USA
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i> $150 - $350 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn">View Profile</a>
+                                </div>
+                                <div class="col-6">
+                                    <a [routerLink]="'/patients/booking'" class="btn book-btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+            <div class="row" *ngIf="mapList">
+                <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+                        <div class="doc-info-left">
+                            <div class="doctor-img">
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-01.jpg" class="img-fluid" alt="User Image">
+                                </a>
+                            </div>
+                            <div class="doc-info-cont">
+                                <h4 class="doc-name"><a [routerLink]="'/patients/doctor-profile'">Dr. Ruby Perrin</a></h4>
+                                <p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+                                <h5 class="doc-department"><img src="assets/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">Dentist</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">(17)</span>
+                                </div>
+                                <div class="clinic-details">
+                                    <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Florida, USA</p>
+                                    <ul class="clinic-gallery">
+                                        <li> 
+                                            <a lightbox-group >
+                                                <img *ngFor="let image of images" 
+                                                [src]="image.path" 
+                                                lightbox />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clinic-services">
+                                    <span>Dental Fillings</span>
+                                    <span> Whitneing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-info-right">
+                            <div class="clini-infos">
+                                <ul>
+                                    <li><i class="far fa-thumbs-up"></i> 98%</li>
+                                    <li><i class="far fa-comment"></i> 17 Feedback</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
+                                    <li><i class="far fa-money-bill-alt"></i> $300 - $2500 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i> </li>
+                                </ul>
+                            </div>
+                            <div class="clinic-booking">
+                                <a class="view-pro-btn" [routerLink]="'/patients/doctor-profile'">View Profile</a>
+                                <a class="apt-btn" [routerLink]="'/patients/booking'">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Doctor Widget -->
+
+            <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+                        <div class="doc-info-left">
+                            <div class="doctor-img">
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+                                </a>
+                            </div>
+                            <div class="doc-info-cont">
+                                <h4 class="doc-name"><a [routerLink]="'/patients/doctor-profile'">Dr. Darren Elder</a></h4>
+                                <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                                <h5 class="doc-department"><img src="assets/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">Dentist</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">(35)</span>
+                                </div>
+                                <div class="clinic-details">
+                                    <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+                                    <ul class="clinic-gallery">
+                                        <li> 
+                                            <a lightbox-group >
+                                                <img *ngFor="let image of images" 
+                                                [src]="image.path" 
+                                                lightbox />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clinic-services">
+                                    <span>Dental Fillings</span>
+                                    <span> Whitneing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-info-right">
+                            <div class="clini-infos">
+                                <ul>
+                                    <li><i class="far fa-thumbs-up"></i> 100%</li>
+                                    <li><i class="far fa-comment"></i> 35 Feedback</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> Newyork, USA</li>
+                                    <li><i class="far fa-money-bill-alt"></i> $50 - $300 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i></li>
+                                </ul>
+                            </div>
+                            <div class="clinic-booking">
+                                <a class="view-pro-btn" [routerLink]="'/patients/doctor-profile'">View Profile</a>
+                                <a class="apt-btn" [routerLink]="'/patients/booking'">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Doctor Widget -->
+
+            <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+                        <div class="doc-info-left">
+                            <div class="doctor-img">
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-03.jpg" class="img-fluid" alt="User Image">
+                                </a>
+                            </div>
+                            <div class="doc-info-cont">
+                                <h4 class="doc-name"><a [routerLink]="'/patients/doctor-profile'">Dr. Deborah Angel</a></h4>
+                                <p class="doc-speciality">MBBS, MD - General Medicine, DNB - Cardiology</p>
+                                <p class="doc-department"><img src="assets/img/specialities/specialities-04.png" class="img-fluid" alt="Speciality">Cardiology</p>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">(27)</span>
+                                </div>
+                                <div class="clinic-details">
+                                    <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Georgia, USA</p>
+                                    <ul class="clinic-gallery">
+                                        <li> 
+                                            <a lightbox-group >
+                                                <img *ngFor="let image of images" 
+                                                [src]="image.path" 
+                                                lightbox />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clinic-services">
+                                    <span>Dental Fillings</span>
+                                    <span> Whitneing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-info-right">
+                            <div class="clini-infos">
+                                <ul>
+                                    <li><i class="far fa-thumbs-up"></i> 99%</li>
+                                    <li><i class="far fa-comment"></i> 35 Feedback</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> Newyork, USA</li>
+                                    <li><i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i></li>
+                                </ul>
+                            </div>
+                            <div class="clinic-booking">
+                                <a class="view-pro-btn" [routerLink]="'/patients/doctor-profile'">View Profile</a>
+                                <a class="apt-btn" [routerLink]="'/patients/booking'">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Doctor Widget -->
+
+            <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+                        <div class="doc-info-left">
+                            <div class="doctor-img">
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-04.jpg" class="img-fluid" alt="User Image">
+                                </a>
+                            </div>
+                            <div class="doc-info-cont">
+                                <h4 class="doc-name"><a [routerLink]="'/patients/doctor-profile'">Dr. Sofia Brient</a></h4>
+                                <p class="doc-speciality">MBBS, MS - General Surgery, MCh - Urology</p>
+                                <p class="doc-department"><img src="assets/img/specialities/specialities-01.png" class="img-fluid" alt="Speciality">Urology</p>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">(4)</span>
+                                </div>
+                                <div class="clinic-details">
+                                    <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Louisiana, USA</p>
+                                    <ul class="clinic-gallery">
+                                        <li> 
+                                            <a lightbox-group >
+                                                <img *ngFor="let image of images" 
+                                                [src]="image.path" 
+                                                lightbox />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clinic-services">
+                                    <span>Dental Fillings</span>
+                                    <span> Whitneing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-info-right">
+                            <div class="clini-infos">
+                                <ul>
+                                    <li><i class="far fa-thumbs-up"></i> 97%</li>
+                                    <li><i class="far fa-comment"></i> 4 Feedback</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> Newyork, USA</li>
+                                    <li><i class="far fa-money-bill-alt"></i> $150 - $250 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i></li>
+                                </ul>
+                            </div>
+                            <div class="clinic-booking">
+                                <a class="view-pro-btn" [routerLink]="'/patients/doctor-profile'">View Profile</a>
+                                <a class="apt-btn" [routerLink]="'/patients/booking'">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Doctor Widget -->
+
+            <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+                        <div class="doc-info-left">
+                            <div class="doctor-img">
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-06.jpg" class="img-fluid" alt="User Image">
+                                </a>
+                            </div>
+                            <div class="doc-info-cont">
+                                <h4 class="doc-name"><a [routerLink]="'/patients/doctor-profile'">Dr. Katharine Berthold</a></h4>
+                                <p class="doc-speciality">MS - Orthopaedics, MBBS, M.Ch - Orthopaedics</p>
+                                <p class="doc-department"><img src="assets/img/specialities/specialities-03.png" class="img-fluid" alt="Speciality">Orthopaedics</p>
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="d-inline-block average-rating">(52)</span>
+                                </div>
+                                <div class="clinic-details">
+                                    <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Texas, USA</p>
+                                    <ul class="clinic-gallery">
+                                        <li> 
+                                            <a lightbox-group >
+                                                <img *ngFor="let image of images" 
+                                                [src]="image.path" 
+                                                lightbox />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="clinic-services">
+                                    <span>Dental Fillings</span>
+                                    <span> Whitneing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc-info-right">
+                            <div class="clini-infos">
+                                <ul>
+                                    <li><i class="far fa-thumbs-up"></i> 100%</li>
+                                    <li><i class="far fa-comment"></i> 52 Feedback</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> Texas, USA</li>
+                                    <li><i class="far fa-money-bill-alt"></i> $100 - $500 <i class="fas fa-info-circle" tooltip="Lorem Ipsum" placement="top"></i></li>
+                                </ul>
+                            </div>
+                            <div class="clinic-booking">
+                                <a class="view-pro-btn" [routerLink]="'/patients/doctor-profile'">View Profile</a>
+                                <a class="apt-btn" [routerLink]="'/patients/booking'">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Doctor Widget -->
+                </div>
+
+            <div class="load-more text-center">
+                <a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>	
+            </div>
+            </div>
+            <!-- /content-left-->
+            <div class="col-xl-6 col-lg-12 map-right">
+                <div id="map" class="map-listing"></div>                
+            </div>
+            <!-- /map-right-->
+        </div>
+        <!-- /row-->
+    </div>
+</div>		
+<!-- /Page Content -->

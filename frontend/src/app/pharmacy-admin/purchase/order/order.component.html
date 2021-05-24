@@ -1,0 +1,79 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+	
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="page-title">Order</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+						<li class="breadcrumb-item active">Order</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		<div class="row">
+			<div class="col-md-12">
+			
+				<!-- Recent Orders -->
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="datatable table table-hover table-center mb-0">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Supplier ID</th>
+										<th>Supplier Name</th>
+										<th>Order by</th>
+										<th>Add order</th>
+										<th>Order list</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let order of orders">
+										<td>{{order.id}}</td>
+										<td>{{order.supplier_id}}</td>
+										<td>{{order.supplier_name}}</td>
+										<td>{{order.order_by}}</td>
+										<td>{{order.add_order  | date: 'd-MMMM-y'}}</td>
+										<td>{{order.order_list}}</td>
+										<td>
+											<div class="actions">
+												<a data-toggle="modal" (click)="deleteModal(delete,order)" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#deleteConfirmModal">
+													<i class="fe fe-trash"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /Recent Orders -->
+				
+			</div>
+		</div>
+	</div>			
+</div>
+<!-- /Page Wrapper -->
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteOrder()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>

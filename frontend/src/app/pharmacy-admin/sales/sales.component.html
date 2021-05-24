@@ -1,0 +1,123 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+	
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="page-title">Sales</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a [routerLink]="''">Dashboard</a></li>
+						<li class="breadcrumb-item active">Sales</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		<div class="row">
+			<div class="col-md-12">
+			
+				<!-- Recent Orders -->
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="datatable table table-hover table-center mb-0">
+								<thead>
+									<tr>
+										<th>Invoice No</th>
+										<th>Medicine Name</th>
+										<th>Total Price</th>
+										<th>Date</th>
+										<th class="text-right">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let sale of sales">
+										<td>{{sale.invoice_number}}</td>
+										<td>{{sale.machine_name}}</td>
+										<td>${{sale.total_price}}</td>
+										<td>{{sale.date | date: 'd-MMMM-y'}}</td>
+										<td class="text-right">
+											<div class="actions">
+												<a class="btn btn-sm bg-success-light" data-toggle="modal" (click)="editModal(edittemplate,sale)">
+                                                    <i class="fe fe-pencil"></i> Edit
+                                                </a>
+												<a class="btn btn-sm bg-default-light" [routerLink]="'/pharmacy-admin/invoice'">
+													<i class="fas fa-file-alt"></i> Invoice
+												</a>
+												<a data-toggle="modal" (click)="deleteModal(delete,sale)" class="btn btn-sm bg-danger-light" data-toggle="modal" data-target="#deleteConfirmModal">
+													<i class="fe fe-trash"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /Recent Orders -->
+				
+			</div>
+		</div>
+	</div>			
+</div>
+<!-- /Page Wrapper -->
+<ng-template #edittemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Category</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+        <form>
+			<div class="row form-row">
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Invoice Number</label>
+						<input type="text" class="form-control" value="20169998">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Medicine Name</label>
+						<input type="text" class="form-control" value="Abilify">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<input type="text"  class="form-control" value="$150.00">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Created Date</label>
+						<input type="text"  class="form-control" value="14-5-2020">
+					</div>
+				</div>				
+			</div>
+		</form>
+        <div style="margin-top:25px">
+            <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="update()" >Update</button>
+            <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >Cancel</button>
+          </div>
+    </div>
+</ng-template>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>
