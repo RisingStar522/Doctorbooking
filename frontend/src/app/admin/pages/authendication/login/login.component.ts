@@ -1,64 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
-import { CommonServiceService } from '../../../../common-service.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
+import { TokenStorageService } from '../../../services/token-storage.service';
 import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isAdmin = true;
-  admin: any =[];
-  loginForm: FormGroup;
-  username = '';
-  password = '';
+  form: any = {
+    username: null,
+    password: null
+  };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+
   constructor(
-    public router: Router,
-    private _formBuilder: FormBuilder,
-    public commonService: CommonServiceService,
-    private toastr: ToastrService
-    ) {
-      this.username = '';
-      this.password = '';
-      this.admin = [];
-  }
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.getAdmin();
-  }
-
-
-  checkType(event) {
-    this.isAdmin = event.target.checked ? true : false;
-  }
-
-  login(name, password) {
-    localStorage.setItem('auth', 'true');
-    localStorage.setItem('patient', this.isAdmin.toString());
-    if (this.isAdmin) {
-      let filter = this.admin.filter(
-        (a) => a.name == this.username && a.password === this.password
-      );
-      if (filter.length != 0) {
-        localStorage.setItem('id', filter[0]['id']);
-        this.toastr.success('', 'Login success!');
-        this.commonService.nextmessage('patientLogin');
-        this.router.navigate(['/patients/dashboard']);
-      } else {
-        this.toastr.error('', 'Login failed!');
-      }
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
     }
   }
 
-  getAdmin() {
-    this.commonService.getDoctors().subscribe((res) => {
-      this.admin = res;
-    });
+  login(): void {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      },
+      err => {
+        this.toastr.error('', 'Login failed!');
+        this.isLoginFailed = true;
+      }
+    );
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 }
