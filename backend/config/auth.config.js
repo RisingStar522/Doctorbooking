@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "alvaro-secret-key"
+    secret: "doctae-secret-key"
 };

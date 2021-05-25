@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../services/auth.service';
+import { TokenStorageService } from '../services/token-storage.service';
+
 import { CommonServiceService } from '../../common-service.service';
 @Component({
   selector: 'app-sidemenu',
@@ -13,11 +16,13 @@ export class SidemenuComponent implements OnInit {
   showDropdown = true;
   public bellCollapsed = true;
   public userCollapsed = true;
-
   constructor(
     @Inject(DOCUMENT) private document,
     public router: Router,
-    private commonService: CommonServiceService
+    private commonService: CommonServiceService,
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
+
   ) {}
   ngOnInit(): void {}
 
@@ -43,6 +48,7 @@ export class SidemenuComponent implements OnInit {
   }
   clickLogout() {
     // window.location.href = '/admin/login-form';
+    this.tokenStorage.signOut();
   }
   bell() {
     this.bellCollapsed = !this.bellCollapsed;

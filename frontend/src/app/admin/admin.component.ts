@@ -14,7 +14,7 @@ import {
 } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { CommonServiceService } from '../common-service.service';
-
+import { TokenStorageService } from './services/token-storage.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -27,10 +27,14 @@ export class AdminComponent implements OnInit {
     @Inject(DOCUMENT) private document,
     public commonService: CommonServiceService,
     private route: ActivatedRoute,
+    private tokenStorage: TokenStorageService,
     public Router: Router
   ) {
     Router.events.subscribe((event: Event) => {
+
+
       if (event instanceof NavigationStart) {
+
         if (
           event.url === '/admin/forgot-pass' ||
           event.url === '/admin/lock-screen' ||

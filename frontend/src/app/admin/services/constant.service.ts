@@ -5,7 +5,6 @@ import { environment } from "../../../environments/environment";
   providedIn: "root",
 })
 export class ConstantService {
-  // authencation releated end points
   public getaccesstoken = "user/login";
   public socialLogin = "user/social-login";
   public createUser = "user/register";

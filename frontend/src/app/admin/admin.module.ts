@@ -6,8 +6,10 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DataService } from './../data.service';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+// import { LoginComponent } from './pages/authendication/login/login.component';
 @NgModule({
   declarations: [AdminComponent, SidemenuComponent],
   imports: [
@@ -16,6 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     InMemoryWebApiModule.forRoot(DataService),
     ModalModule.forRoot(),
+    HttpClientModule,
   ],
+  providers: [authInterceptorProviders],
 })
 export class AdminModule {}

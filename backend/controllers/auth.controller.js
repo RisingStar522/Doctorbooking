@@ -57,8 +57,9 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+    console.log(req.body);
     User.findOne({
-            email: req.body.email
+            email: req.body.username
         })
         .populate("roles", "-__v")
         .exec((err, user) => {
@@ -152,8 +153,9 @@ exports.signup_admin = (req, res) => {
 };
 
 exports.signin_admin = (req, res) => {
+    console.log(req.body)
     administratorsSchema.findOne({
-            email: req.body.email
+            email: req.body.username
         })
         .populate("roles", "-__v")
         .exec((err, admin) => {
@@ -183,6 +185,7 @@ exports.signin_admin = (req, res) => {
 
             res.status(200).send({
                 status: "success",
+                accessToken:token,
                 data: {
                     id: admin._id,
                     firstname: admin.first_name,
