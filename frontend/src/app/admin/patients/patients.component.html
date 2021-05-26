@@ -1,5 +1,5 @@
  <div class="page-wrapper">
-	<div class="content container-fluid">			
+	<div class="content container-fluid">
 					<!-- Page Header -->
 		<div class="page-header">
 			<div class="row">
@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<!-- /Page Header -->
-		
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card">
@@ -35,7 +35,7 @@
 								</thead>
 								<tbody>
 									<tr *ngFor="let patient of patientsList">
-										<td>{{patient.key}}</td>
+										<td>{{patient._id}}</td>
 										<td>
 											<h2 class="table-avatar">
 												<a href="javascript:void(0)" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" [src]="patient.img" alt="User Image"></a>
@@ -48,15 +48,15 @@
 										<td>{{patient.lastvisit | date : 'dd MMM yyyy'}}</td>
 										<td class="text-right">${{patient.paid}}</td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 						</div>
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-		
-	</div>			
+
+	</div>
 </div>

@@ -53,4 +53,10 @@ module.exports = function(app, upload) {
 
     app.post("/api/user/changePwd", userController.changePwd);
 
+    app.get("/api/user/doctors", userController.doctors);
+    
+    app.get("/api/user/patients", userController.patients);
+
+    app.post("/api/user/doctorStatus", userController.changeDoctorStatus);
+
 };

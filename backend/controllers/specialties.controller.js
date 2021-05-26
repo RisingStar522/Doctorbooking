@@ -15,8 +15,9 @@ exports.getSpecialtiesList = async(req, res) => {
 
 exports.createNewSpeicalty = (req, res) => {
     const specialty = new SpeicaltiesSchema({
-        specialty: req.body.specialties,
-        image: req.file.filename
+        speciality: req.body.speciality,
+        img:"assets/img/specialities/default.png"
+        // image: req.file.filename        
     });
     specialty.save((err) => {
         if (err) {
@@ -27,18 +28,37 @@ exports.createNewSpeicalty = (req, res) => {
             });
             return;
         }
+        console.log(req.body);
         res.status(200).send({ status: "success", msg: `Successfully added`, });
     });
 };
 
 exports.editSpecialty = (req, res) => {
 
-    if (req.body.oldfile == "null") {
+    // if (req.body.oldfile == "null") {
+    //     const specialty = {
+    //         specialty: req.body.specialties,
+    //         image: req.file.filename
+    //     };
+    //     SpeicaltiesSchema.updateOne({ _id: req.body.itemid }, { $set: specialty },
+    //         function(err, result) {
+    //             if (err) {
+    //                 res.send({
+    //                     status: "failed",
+    //                     data: {},
+    //                     msg: `Something went wrong ${err}`,
+    //                 });
+    //                 return;
+    //             }
+    //             res.status(200).send({ status: "success", data: {}, msg: "Specialty modified." });
+    //         }
+    //     );
+    // } else {
         const specialty = {
-            specialty: req.body.specialties,
-            image: req.file.filename
+            speciality: req.body.speciality
+            // img: req.body.oldfile
         };
-        SpeicaltiesSchema.updateOne({ _id: req.body.itemid }, { $set: specialty },
+        SpeicaltiesSchema.updateOne({ _id: req.body.id }, { $set: specialty },
             function(err, result) {
                 if (err) {
                     res.send({
@@ -51,25 +71,7 @@ exports.editSpecialty = (req, res) => {
                 res.status(200).send({ status: "success", data: {}, msg: "Specialty modified." });
             }
         );
-    } else {
-        const specialty = {
-            specialty: req.body.specialties,
-            image: req.body.oldfile
-        };
-        SpeicaltiesSchema.updateOne({ _id: req.body.itemid }, { $set: specialty },
-            function(err, result) {
-                if (err) {
-                    res.send({
-                        status: "failed",
-                        data: {},
-                        msg: `Something went wrong ${err}`,
-                    });
-                    return;
-                }
-                res.status(200).send({ status: "success", data: {}, msg: "Specialty modified." });
-            }
-        );
-    }
+    // }
 
 
 
@@ -84,16 +86,16 @@ exports.deleteSpecialty = (req, res) => {
                 msg: `Something went wrong ${err}`,
             });
             return;
-        } else {
+        } //else {
             // fs.unlink("../frontend/resource/images/uploads/"+req.body.filename);
-            fs.unlink("../frontend/resource/images/uploads/" + req.body.filename, (err) => {
-                if (err) {
-                    console.log("failed to delete local image:" + err);
-                } else {
-                    console.log('successfully deleted local image');
-                }
-            });
-        }
+        //     fs.unlink("../frontend/resource/images/uploads/" + req.body.filename, (err) => {
+        //         if (err) {
+        //             console.log("failed to delete local image:" + err);
+        //         } else {
+        //             console.log('successfully deleted local image');
+        //         }
+        //     });
+        // }
 
         res.send({
             status: "success",

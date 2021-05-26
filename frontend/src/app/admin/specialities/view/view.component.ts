@@ -41,16 +41,11 @@ export class ViewComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {
       class: 'modal-lg modal-dialog-centered',
     });
-    // this.name = "";
-    // this.id = "";
-    // this.key = "";
   }
 
   editModal(template: TemplateRef<any>, special) {
     this.id = special._id;
-    // this.name = data[0].speciality;
-    // this.id = data[0].id;
-    // this.key = data[0].key;
+    this.name = special.speciality;
     this.modalRef = this.modalService.show(template, {
       class: 'modal-lg modal-dialog-centered',
     });
@@ -64,15 +59,9 @@ export class ViewComponent implements OnInit {
   }
 
   save() {
-    let count = this.speciality.reverse()[0]['key'] + 1;
-    let id = this.speciality.reverse()[0]['id'] + 1
     let params = {
-      id : id,
-      key : count,
       speciality : this.name,
-      img: this.img
     }
-    console.log(params);
     this.commonService.createSpeciality(params).subscribe((data : any[])=>{
       this.modalRef.hide();
       this.getSpecialityList();
@@ -83,13 +72,12 @@ export class ViewComponent implements OnInit {
   update() {
     let params = {
       id: this.id,
-      key: this.key,
       speciality: this.name,
     };
-    // this.commonService.updateSpeciality(params,this.id).subscribe((data : any[])=>{
-    //   this.modalRef.hide();
-    //   this.getSpecialityList();
-    // });
+    this.commonService.updateSpeciality(params).subscribe((data : any[])=>{
+      this.modalRef.hide();
+      this.getSpecialityList();
+    });
     this.modalRef.hide();
   }
 

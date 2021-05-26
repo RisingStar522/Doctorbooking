@@ -77,24 +77,30 @@ export class CommonServiceService {
     }
   }
 
+  doctorStatus(data) {
+    return this.http.post(`${this.SERVER_URL + 'user/doctorStatus'}`,data);
+  }
+
   getSpeciality() {
     return this.http.get(this.SERVER_URL + 'specialties/getSpecialtiesList');
   }
 
   createSpeciality(data) {
-    return this.http.post(`${this.SERVER_URL + 'specialityList'}`, data);
+    return this.http.post(`${this.SERVER_URL + 'specialties/addSpecialties'}`, data);
   }
 
-  updateSpeciality(data, id) {
-    return this.http.put(`${this.SERVER_URL + 'specialityList'}/${id}`, data);
+  updateSpeciality(data) {
+    return this.http.post(`${this.SERVER_URL + 'specialties/editSpecialties'}/`, data);
   }
 
   deleteSpeciality(id) {
-    return this.http.delete(`${this.SERVER_URL + 'specialityList'}/${id}`);
+    var data={};
+    data={"_id":id};
+    return this.http.post(`${this.SERVER_URL + 'specialties/deleteSpecialties'}`,data);
   }
 
   getDoctors() {
-    return this.http.get(this.SERVER_URL + 'doctors');
+    return this.http.get(this.SERVER_URL + 'user/doctors');
   }
 
   getDoctorDetails(id) {
@@ -110,7 +116,7 @@ export class CommonServiceService {
   }
 
   getpatients() {
-    return this.http.get(this.SERVER_URL + 'patients');
+    return this.http.get(this.SERVER_URL + 'user/patients');
   }
 
   createBlogs(data) {

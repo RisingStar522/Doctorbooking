@@ -6,6 +6,8 @@ const db = {};
 db.mongoose = mongoose;
 
 db.user = require("./user.model");
+db.doctor = require("./doctor.model");
+db.patients = require("./patients.model");
 db.speicalties = require("./specialties.model");
 db.products = require("./products.model");
 db.settings = require("./settings.model");

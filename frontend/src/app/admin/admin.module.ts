@@ -9,7 +9,6 @@ import { DataService } from './../data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-// import { LoginComponent } from './pages/authendication/login/login.component';
 @NgModule({
   declarations: [AdminComponent, SidemenuComponent],
   imports: [
@@ -18,7 +17,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     NgbModule,
     InMemoryWebApiModule.forRoot(DataService),
     ModalModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [authInterceptorProviders],
 })

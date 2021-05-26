@@ -1,5 +1,7 @@
 const db = require("../models");
 const UserSchema = db.user;
+const doctorSchema = db.doctor;
+const patientSchema = db.patients;
 const administratorsSchema = db.administratorsSchema;
 const mail = require('./mail');
 var jwt = require("jsonwebtoken");
@@ -43,6 +45,8 @@ exports.getAdminProfile = async(req, res) => {
         }
     })
 }
+
+
 
 exports.getUserList = async(req, res) => {
     var query = {};
@@ -732,4 +736,39 @@ exports.editUserProfile = (req, res) => {
             }
         );
     }
+}
+
+
+exports.doctors = async(req, res) => {
+    doctorSchema.find({}).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })   
+}
+
+exports.patients = async(req, res) => {
+    patientSchema.find({}).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })   
+}
+exports.changeDoctorStatus= async(req, res) => {
+    if(req.body.status == "1"){
+        currentlyStatus = "0";
+    }else{
+        currentlyStatus = "1";
+    }
+    
+    doctorSchema.updateOne({ _id: req.body._id }, { status: currentlyStatus },
+        function(er, result) {
+        }
+    );
+
+    res.status(200).send({ status: 'success' });
 }

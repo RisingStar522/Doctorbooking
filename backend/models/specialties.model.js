@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const specialtiesSchema = new mongoose.Schema({
-    specialty: {
+    speciality: {
         type: String,
         required: true
     },
-    image: {
+    img: {
         type: String
     }
 });
