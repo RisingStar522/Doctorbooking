@@ -23,18 +23,17 @@ import { TokenStorageService } from './services/token-storage.service';
 })
 export class AdminComponent implements OnInit {
   adminShow: boolean = true;
+  isLoggedIn: boolean = false;
+  roles: string[] = [];
   constructor(
     @Inject(DOCUMENT) private document,
     public commonService: CommonServiceService,
     private route: ActivatedRoute,
-    private tokenStorage: TokenStorageService,
+    private tokenStorageService: TokenStorageService,
     public Router: Router
   ) {
     Router.events.subscribe((event: Event) => {
-
-
       if (event instanceof NavigationStart) {
-
         if (
           event.url === '/admin/forgot-pass' ||
           event.url === '/admin/lock-screen' ||
@@ -53,8 +52,16 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.nextmessage('admin');
     let scope = this;
-    setTimeout(() => {
-      scope.Router.navigateByUrl('/admin/dashboard');
-    }, 100);
+    if (this.tokenStorageService.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorageService.getUser().roles;
+      setTimeout(() => {
+        scope.Router.navigateByUrl('/admin/dashboard');
+      }, 100);
+    }else{
+      setTimeout(() => {
+        scope.Router.navigateByUrl('/admin/login-form');
+      }, 100);
+    }
   }
 }

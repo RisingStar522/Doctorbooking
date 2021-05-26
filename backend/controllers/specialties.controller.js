@@ -4,28 +4,13 @@ const fs = require('fs')
 
 exports.getSpecialtiesList = async(req, res) => {
     var query = {};
-
-    query['_id'] = req.body._id;
-
-    let total_count = 0;
-    if (query['_id'] == "all") {
-        total_count = await SpeicaltiesSchema.find({}).countDocuments();
-        SpeicaltiesSchema.find({}).exec(function(err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.status(200).send({ items: result, total_count });
-            }
-        })
-    } else {
-        SpeicaltiesSchema.find(query).exec(function(err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.status(200).send({ items: result });
-            }
-        })
-    }
+    SpeicaltiesSchema.find({}).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send({ result});
+        }
+    })
 }
 
 exports.createNewSpeicalty = (req, res) => {

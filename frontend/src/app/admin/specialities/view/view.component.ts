@@ -13,6 +13,7 @@ export class ViewComponent implements OnInit {
   modalRef: BsModalRef;
   errorMessage: string;
   name;
+  img;
   id;
   key;
   constructor(
@@ -27,7 +28,7 @@ export class ViewComponent implements OnInit {
   getSpecialityList() {
     this.commonService.getSpeciality().subscribe(
       (data: any[]) => {
-        this.speciality = data;
+        this.speciality = data['result'];
         $(function () {
           $('table').DataTable();
         });
@@ -46,7 +47,7 @@ export class ViewComponent implements OnInit {
   }
 
   editModal(template: TemplateRef<any>, special) {
-    this.id = special.id;
+    this.id = special._id;
     // this.name = data[0].speciality;
     // this.id = data[0].id;
     // this.key = data[0].key;
@@ -56,24 +57,26 @@ export class ViewComponent implements OnInit {
   }
 
   deleteModal(template: TemplateRef<any>, special) {
-    this.id = special.id;
+    this.id = special._id;
     this.modalRef = this.modalService.show(template, {
       class: 'modal-sm modal-dialog-centered',
     });
   }
 
   save() {
-    // let count = this.speciality.reverse()[0]['key'] + 1;
-    // let id = this.speciality.reverse()[0]['id'] + 1
-    // let params = {
-    //   id : id,
-    //   key : count,
-    //   speciality : this.name
-    // }
-    // this.commonService.createSpeciality(params).subscribe((data : any[])=>{
-    //   this.modalRef.hide();
-    //   this.getSpecialityList();
-    // })
+    let count = this.speciality.reverse()[0]['key'] + 1;
+    let id = this.speciality.reverse()[0]['id'] + 1
+    let params = {
+      id : id,
+      key : count,
+      speciality : this.name,
+      img: this.img
+    }
+    console.log(params);
+    this.commonService.createSpeciality(params).subscribe((data : any[])=>{
+      this.modalRef.hide();
+      this.getSpecialityList();
+    })
     this.modalRef.hide();
   }
 

@@ -60,7 +60,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                  
+
                                 </tbody>
                             </table>
                         </div>
@@ -90,10 +90,9 @@
                 <div class="col-12 col-sm-6">
                     <div class="form-group">
                         <label>Image</label>
-                        <input type="file" class="form-control">
+                        <input type="file" class="form-control" id="speciality_image" name="uploadedImage">
                     </div>
                 </div>
-                
             </div>
             <button type="submit" class="btn btn-primary btn-block" (click)="save()">Save Changes</button>
         </form>
@@ -119,10 +118,10 @@
                 <div class="col-12 col-sm-6">
                     <div class="form-group">
                         <label>Image</label>
-                        <input type="file"  class="form-control">
+                        <input type="file"  class="form-control" name="img" [(ngModel)]="img">
                     </div>
                 </div>
-                
+
             </div>
             <button type="submit" class="btn btn-primary btn-block" (click)="update()">Edit</button>
         </form>

@@ -47,6 +47,7 @@
     "ng-select2": "^1.2.2",
     "ng2-bootstrap-typeahead": "^2.0.6",
     "ng2-daterangepicker": "^3.0.1",
+    "ng2-file-upload": "^1.4.0",
     "ng2-input-autocomplete": "^0.3.5",
     "ng2-sticky-kit": "^6.1.0",
     "ng2-tooltip-directive": "^2.9.22",

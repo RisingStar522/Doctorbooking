@@ -13,12 +13,11 @@ export class DataService implements InMemoryDbService {
   createDb(){
 
     let  specialityList =  [
-     {  id: 1,key:  "#SP001", speciality : 'Urology',img : "assets/img/specialities/specialities-01.png" },
-     {  id: 2,key:  "#SP002", speciality : 'Orthopedic',img : "assets/img/specialities/specialities-03.png" },
-     {  id: 3,key:  "#SP003", speciality : 'Neurology', img : "assets/img/specialities/specialities-02.png" },
-     {  id: 4,key:  "#SP004", speciality : 'Cardiologis',img : "assets/img/specialities/specialities-04.png" },
-     {  id: 5,key:  "#SP005", speciality : 'Dentist',img:"assets/img/specialities/specialities-05.png" },
-     
+      {  id: 1,key:  "#SP001", speciality : 'Urology',img : "assets/img/specialities/specialities-01.png" },
+      {  id: 2,key:  "#SP002", speciality : 'Orthopedic',img : "assets/img/specialities/specialities-03.png" },
+      {  id: 3,key:  "#SP003", speciality : 'Neurology', img : "assets/img/specialities/specialities-02.png" },
+      {  id: 4,key:  "#SP004", speciality : 'Cardiologis',img : "assets/img/specialities/specialities-04.png" },
+      {  id: 5,key:  "#SP005", speciality : 'Dentist',img:"assets/img/specialities/specialities-05.png" },
     ];
 
     let appointments = [
@@ -386,7 +385,7 @@ export class DataService implements InMemoryDbService {
             video_call : "$50"
         }
     ]
- 
+
     let patients = [
       {
             id : "1",
@@ -555,7 +554,7 @@ export class DataService implements InMemoryDbService {
             bloodgroup : "A-",
             type : "Male",
             img : "assets/img/patients/patient11.jpg"
-        }        
+        }
     ]
 
     let reviews = [
@@ -808,7 +807,7 @@ export class DataService implements InMemoryDbService {
     doctor_name : "Dr. Olga Barlow",
     doctor_pic : "assets/img/doctors/doctor-thumb-10.jpg"
   }
-] 
+]
 
 
 let products = [
@@ -1052,7 +1051,7 @@ let products = [
       id : '10',
       name  : 'Infectious diseases‎',
       created_date : 'Wed May 08 2020 02:00:00 GMT+0530 (India Standard Time)'
-    } 
+    }
 ]
 
 let purchase = [
@@ -1121,9 +1120,9 @@ let purchase = [
     quantity: '605',
     supplier: 'Douglas',
     expire_date : 'Wed Jun 13 2020 12:00:00 GMT+0530 (India Standard Time)'
-  },  
+  },
 ]
- 
+
 let orders = [
   {
     id : 1,
@@ -1172,7 +1171,7 @@ let orders = [
     order_by: 'Hill Crest Clinic',
     add_order: 'Wed Jun 10 2020 12:00:00 GMT+0530 (India Standard Time)',
     order_list: 'Dolofin Antigripal(Dolo)  50 Dolofin Antigripal(Dolo)  4',
-  },  
+  },
 ]
 
 let sales = [
@@ -1199,7 +1198,7 @@ let sales = [
     machine_name: 'Abilify, Actamin, Actamin',
     total_price: 'Douglas Meyer',
     date: 'Wed Jun 15 2020 12:00:00 GMT+0530 (India Standard Time)',
-  }, 
+  },
 ]
   let suppliers = [
     {
@@ -1231,10 +1230,10 @@ let sales = [
       email: 'Discarsa@gmail.com',
       address: 'Paseo Los Robles',
       company: 'Discarsa Nicaragua',
-    }, 
+    },
 ]
 
-let pharmacy_transactions = [  
+let pharmacy_transactions = [
   {
     id: 1,
     invoice_number: '#IN0001',
@@ -1261,7 +1260,7 @@ let pharmacy_transactions = [
     product_name: 'Safi Natural Blood Purifier',
     total_amount : '250',
     status: 'paid',
-  }, 
+  },
   {
     id: 4,
     invoice_number: '#IN0004',
@@ -1327,14 +1326,14 @@ let pharmacy_transactions = [
   },
 ]
 
-let pharmacy_reports = [  
+let pharmacy_reports = [
   {
     id: 1,
     invoice_number: '#IN0001',
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '100',
-    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1343,7 +1342,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '200',
-    created_date: 'Wed Sep 25 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Sep 25 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1352,7 +1351,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '250',
-    created_date: 'Wed Oct 25 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Oct 25 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'pending',
   },
   {
@@ -1361,7 +1360,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '150',
-    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'unpaid',
   },
   {
@@ -1370,7 +1369,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '350',
-    created_date: 'Wed Nov 19 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Nov 19 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1379,7 +1378,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '300',
-    created_date: 'Wed Oct 12 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Oct 12 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1388,7 +1387,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '100',
-    created_date: 'Wed Oct 25 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Oct 25 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1397,7 +1396,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify, Actamin, Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '150',
-    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Sep 09 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1406,7 +1405,7 @@ let pharmacy_reports = [
     medicine_name: 'Abilify',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '100',
-    created_date: 'Wed Nov 05 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Nov 05 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
   {
@@ -1415,12 +1414,12 @@ let pharmacy_reports = [
     medicine_name: 'Abilify,Actamin',
     medicine_img: 'assets/admin/img/product/product.jpg',
     total_amount : '100',
-    created_date: 'Wed Nov 07 2020 12:00:00 GMT+0530 (India Standard Time)',   
+    created_date: 'Wed Nov 07 2020 12:00:00 GMT+0530 (India Standard Time)',
     status: 'paid',
   },
 ]
 
-let pharmacy = [  
+let pharmacy = [
   {
     id: 1,
     pharmacy_id: '#SP001',
@@ -1428,7 +1427,7 @@ let pharmacy = [
     name: 'The Pill Club Medical',
     addr: '3503 Flint Street Saipan, MP 96950',
     phone: '816-270-2336',
-    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',  
+    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',
   },
   {
     id: 2,
@@ -1437,7 +1436,7 @@ let pharmacy = [
     name: 'PharmaMed Medical',
     addr: '3130 Murry Street Princess Anne, VA 23456',
     phone: '913-631-2538',
-    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',  
+    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',
   },
   {
     id: 3,
@@ -1446,10 +1445,10 @@ let pharmacy = [
     name: 'Medlife Medical',
     addr: '96 Red Hawk Road Cyrus, MN 56323',
     phone: '320-795-8815',
-    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',  
-  },  
+    created_date: 'Wed May 12 2020 12:00:00 GMT+0530 (India Standard Time)',
+  },
 ]
   return {pharmacy: pharmacy, pharmacy_reports: pharmacy_reports, pharmacy_transactions: pharmacy_transactions, supplier: suppliers, sales: sales, orders:orders, purchase:purchase, categories:categories, products:products, transactions:transactions,comments:comments,favourites:favourites,blogs:blogs,specialityList:specialityList,appointments:appointments,doctors:doctors,patients:patients,reviews:reviews};
- 
+
   }
 }

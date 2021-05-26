@@ -10,6 +10,6 @@ module.exports = function(app, upload) {
   });
   app.post("/api/specialties/addSpecialties",  upload.single("uploadfile"), specialtiesController.createNewSpeicalty);
   app.post("/api/specialties/editSpecialties",  upload.single("uploadfile"), specialtiesController.editSpecialty);  
-  app.post("/api/specialties/getSpecialtiesList", specialtiesController.getSpecialtiesList);
+  app.get("/api/specialties/getSpecialtiesList", specialtiesController.getSpecialtiesList);
   app.post("/api/specialties/deleteSpecialties", specialtiesController.deleteSpecialty);
 };
