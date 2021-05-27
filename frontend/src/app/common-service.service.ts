@@ -81,6 +81,16 @@ export class CommonServiceService {
     return this.http.post(`${this.SERVER_URL + 'user/doctorStatus'}`,data);
   }
 
+  getUserinfo(user) {
+    var userinfo = {};
+    userinfo = {"email":user};
+    return this.http.post(`${this.SERVER_URL + 'user/getAdmin'}`,userinfo);
+  }
+
+  updateAdminInfo(data) {
+    return this.http.post(`${this.SERVER_URL + 'user/updateAdminDetails'}`, data);
+  }
+
   getSpeciality() {
     return this.http.get(this.SERVER_URL + 'specialties/getSpecialtiesList');
   }

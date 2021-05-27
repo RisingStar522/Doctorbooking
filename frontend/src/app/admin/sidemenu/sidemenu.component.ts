@@ -14,6 +14,10 @@ import { CommonServiceService } from '../../common-service.service';
 export class SidemenuComponent implements OnInit {
   page = 'Dashboard';
   showDropdown = true;
+  userEmail;
+  userinfo =[];
+  errorMessage : String;
+
   public bellCollapsed = true;
   public userCollapsed = true;
   constructor(
@@ -24,7 +28,21 @@ export class SidemenuComponent implements OnInit {
     private tokenStorage: TokenStorageService
 
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.userEmail = this.tokenStorage.getUser();
+      this.getAdminInfo();
+    }
+  }
+
+  getAdminInfo() {
+    this.commonService.getUserinfo(this.userEmail).subscribe(
+      (data: any[]) => {
+        this.userinfo = data[0];
+      },
+      (error) => (this.errorMessage = <any>error)
+    );
+  }
 
   ngAfterViewInit() {
     this.loadDynmicallyScript('assets/admin/js/script.js');

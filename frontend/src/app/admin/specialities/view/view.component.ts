@@ -16,6 +16,9 @@ export class ViewComponent implements OnInit {
   img;
   id;
   key;
+  selectedFile: File = null;
+  fd = new FormData();
+
   constructor(
     private commonService: CommonServiceService,
     private modalService: BsModalService
@@ -23,6 +26,11 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSpecialityList();
+  }
+
+  createFormData(event) {
+    this.selectedFile = <File>event.target.files[0];
+    this.fd.append('uploadfile', this.selectedFile, this.selectedFile.name);
   }
 
   getSpecialityList() {
@@ -59,10 +67,8 @@ export class ViewComponent implements OnInit {
   }
 
   save() {
-    let params = {
-      speciality : this.name,
-    }
-    this.commonService.createSpeciality(params).subscribe((data : any[])=>{
+    this.fd.append("speciality",this.name);
+    this.commonService.createSpeciality(this.fd).subscribe((data : any[])=>{
       this.modalRef.hide();
       this.getSpecialityList();
     })

@@ -72,15 +72,15 @@
 		<li class="nav-item dropdown has-arrow" id="dropdown" >
 			<a href="javascript:void(0)" class="dropdown-toggle nav-link"  class="dropdown-toggle nav-link" (click)="user()"
 			[attr.aria-expanded]="!userCollapsed" aria-controls="collapseExample2">
-				<span class="user-img"><img class="rounded-circle" src="assets/admin/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+				<span class="user-img"><img class="rounded-circle" [src]="userinfo['avatar']" width="31" [alt]="userinfo['firstname'] +' '+ userinfo['lastname']"></span>
 			</a>
 			<div class="dropdown-menu" id="collapseExample2" [ngbCollapse]="userCollapsed">
 				<div class="user-header">
 					<div class="avatar avatar-sm">
-						<img src="assets/admin/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+						<img [src]="userinfo['avatar']" class="avatar-img rounded-circle">
 					</div>
 					<div class="user-text">
-						<h6>Ryan Taylor</h6>
+						<h6>{{userinfo['firstname'] +' '+ userinfo['lastname']}}</h6>
 						<p class="text-muted mb-0">Administrator</p>
 					</div>
 				</div>

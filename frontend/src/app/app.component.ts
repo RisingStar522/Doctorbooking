@@ -24,7 +24,7 @@ import { CommonServiceService } from './common-service.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit, AfterViewChecked {
-  title = 'doccure';
+  title = 'doctae';
   url;
   loadFooter = false;
   show: boolean = true;
