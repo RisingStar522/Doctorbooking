@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 
-import { MessagesRoutingModule } from './messages-routing.module';
-import { MessagesComponent } from './messages.component';
+import {MessagesRoutingModule} from './messages-routing.module';
+import {MessagesComponent} from './messages.component';
 
 
 @NgModule({
@@ -15,4 +15,5 @@ import { MessagesComponent } from './messages.component';
     MessagesRoutingModule
   ]
 })
-export class MessagesModule { }
+export class MessagesModule {
+}

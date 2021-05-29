@@ -1,8 +1,9 @@
 .breadcrumb-bar {
-    background-color: #15558d;
-    padding: 15px 0;
-    /*margin-top: 6em;*/
+  background-color: #15558d;
+  padding: 15px 0;
+  /*margin-top: 6em;*/
 }
+
 #daterange {
-    border: none;
+  border: none;
 }

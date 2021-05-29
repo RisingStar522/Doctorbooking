@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeSliderOneComponent } from './home-slider-one.component';
-import { HomeSliderOneRoutingModule } from './home-slider-one-routing.module';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HomeSliderOneComponent} from './home-slider-one.component';
+import {HomeSliderOneRoutingModule} from './home-slider-one-routing.module';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [HomeSliderOneComponent],
@@ -12,4 +12,5 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     SlickCarouselModule
   ]
 })
-export class HomeSliderOneModule { }
+export class HomeSliderOneModule {
+}

@@ -1,32 +1,32 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PharmacyAdminComponent } from './pharmacy-admin.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {PharmacyAdminComponent} from './pharmacy-admin.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PharmacyAdminComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-      }, 
+      },
       {
         path: 'categories',
         loadChildren: () =>
           import('./categories/categories.module').then(
             (m) => m.CategoriesModule
           ),
-      }, 
+      },
       {
         path: 'profile',
         loadChildren: () =>
           import('./profile/profile.module').then(
             (m) => m.ProfileModule
           ),
-      },       
+      },
       {
         path: 'products',
         loadChildren: () =>
@@ -47,14 +47,14 @@ const routes: Routes = [
           import('./products/add-product/add-product.module').then(
             (m) => m.AddProductModule
           ),
-      },  
+      },
       {
         path: 'expired',
         loadChildren: () =>
           import('./products/expired/expired.module').then(
             (m) => m.ExpiredModule
           ),
-      },  
+      },
       {
         path: 'out-stock',
         loadChildren: () =>
@@ -82,14 +82,14 @@ const routes: Routes = [
           import('./purchase/add-purchase/add-purchase.module').then(
             (m) => m.AddPurchaseModule
           ),
-      },  
+      },
       {
         path: 'orders',
         loadChildren: () =>
           import('./purchase/order/order.module').then(
             (m) => m.OrderModule
           ),
-      }, 
+      },
       {
         path: 'transactions',
         loadChildren: () =>
@@ -115,7 +115,7 @@ const routes: Routes = [
           import('./supplier/add-supplier/add-supplier.module').then(
             (m) => m.AddSupplierModule
           ),
-      },  
+      },
       {
         path: 'invoice',
         loadChildren: () =>
@@ -145,4 +145,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PharmacyAdminRoutingModule {}
+export class PharmacyAdminRoutingModule {
+}

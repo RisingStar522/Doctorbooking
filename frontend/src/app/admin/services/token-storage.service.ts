@@ -1,6 +1,6 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Subject } from 'rxjs';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {Subject} from 'rxjs';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -13,7 +13,7 @@ const USER_KEY_MEMBER = 'auth-user-member';
 })
 export class TokenStorageService {
 
-  isLoggedIn: string = "false";
+  isLoggedIn: string = 'false';
 
   userInfo: any;
 
@@ -21,7 +21,7 @@ export class TokenStorageService {
 
   UserInfoChange: Subject<any> = new Subject<any>();
 
-  isLoggedIn_member: string = "false";
+  isLoggedIn_member: string = 'false';
 
   userInfo_member: any;
 
@@ -30,13 +30,19 @@ export class TokenStorageService {
   UserInfoChange_member: Subject<any> = new Subject<any>();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    if(this.getToken() == null) this.isLoggedIn = "false";
-    else this.isLoggedIn = "true";
+    if (this.getToken() == null) {
+      this.isLoggedIn = 'false';
+    } else {
+      this.isLoggedIn = 'true';
+    }
 
     this.userInfo = this.getUser();
 
-    if(this.getToken_member() == null) this.isLoggedIn_member = "false";
-    else this.isLoggedIn_member = "true";
+    if (this.getToken_member() == null) {
+      this.isLoggedIn_member = 'false';
+    } else {
+      this.isLoggedIn_member = 'true';
+    }
 
     this.userInfo_member = this.getUser_member();
   }
@@ -47,7 +53,7 @@ export class TokenStorageService {
       window.sessionStorage.removeItem(TOKEN_KEY);
       window.sessionStorage.removeItem(USER_KEY);
 
-      this.LoggedInChange.next("false");
+      this.LoggedInChange.next('false');
       this.UserInfoChange.next(this.getUser());
     }
   }
@@ -57,7 +63,7 @@ export class TokenStorageService {
       window.sessionStorage.removeItem(TOKEN_KEY);
       window.sessionStorage.setItem(TOKEN_KEY, token);
 
-      this.LoggedInChange.next("true");
+      this.LoggedInChange.next('true');
       this.UserInfoChange.next(this.getUser());
     }
   }
@@ -89,7 +95,7 @@ export class TokenStorageService {
       window.sessionStorage.removeItem(TOKEN_KEY_MEMBER);
       window.sessionStorage.removeItem(USER_KEY_MEMBER);
 
-      this.LoggedInChange_member.next("false");
+      this.LoggedInChange_member.next('false');
       this.UserInfoChange_member.next(this.getUser_member());
     }
   }
@@ -99,7 +105,7 @@ export class TokenStorageService {
       window.sessionStorage.removeItem(TOKEN_KEY_MEMBER);
       window.sessionStorage.setItem(TOKEN_KEY_MEMBER, token);
 
-      this.LoggedInChange_member.next("true");
+      this.LoggedInChange_member.next('true');
       this.UserInfoChange_member.next(this.getUser_member());
     }
   }

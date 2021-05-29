@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MapGridComponent } from './map-grid.component';
-import { MapGridRoutingModule } from './map-grid-routing.module';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { NgSelect2Module } from 'ng-select2';
-import { CrystalLightboxModule } from '@crystalui/angular-lightbox';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MapGridComponent} from './map-grid.component';
+import {MapGridRoutingModule} from './map-grid-routing.module';
+import {GoogleMapsModule} from '@angular/google-maps';
+import {NgSelect2Module} from 'ng-select2';
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
+import {TooltipModule} from 'ng2-tooltip-directive';
 
 @NgModule({
   declarations: [MapGridComponent],
@@ -18,4 +18,5 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     TooltipModule,
   ],
 })
-export class MapGridModule {}
+export class MapGridModule {
+}

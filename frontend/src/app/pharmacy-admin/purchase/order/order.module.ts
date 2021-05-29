@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DataTablesModule } from 'angular-datatables';
-import { OrderComponent } from './order.component';
-import { OrderRoutingModule } from './order-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DataTablesModule} from 'angular-datatables';
+import {OrderComponent} from './order.component';
+import {OrderRoutingModule} from './order-routing.module';
 
 @NgModule({
-  declarations: [ OrderComponent ],
+  declarations: [OrderComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,
     DataTablesModule
   ]
 })
-export class OrderModule { }
+export class OrderModule {
+}

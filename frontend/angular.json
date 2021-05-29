@@ -32,20 +32,20 @@
               "node_modules/fullcalendar/main.min.css",
               "node_modules/morris.js/morris.css"
             ],
-            "scripts": [  
-              "node_modules/jquery/dist/jquery.min.js",  
-              "node_modules/bootstrap/dist/js/bootstrap.min.js", 
-              "src/assets/js/popper.min.js", 
-              "node_modules/datatables.net/js/jquery.dataTables.js",             
-              "node_modules/moment/min/moment.min.js",             
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/popper.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/moment/min/moment.min.js",
               "./src/assets/js/circle-progress.min.js",
-              "./src/assets/admin/plugins/slimscroll/jquery.slimscroll.min.js",                         
+              "./src/assets/admin/plugins/slimscroll/jquery.slimscroll.min.js",
               "./src/assets/js/script.js",
               "node_modules/select2/dist/js/select2.min.js",
-              "node_modules/slick-carousel/slick/slick.min.js",              
+              "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/fullcalendar/main.min.js",
-              "node_modules/raphael/raphael.js", 
-              "node_modules/morris.js/morris.js"          
+              "node_modules/raphael/raphael.js",
+              "node_modules/morris.js/morris.js"
             ]
           },
           "configurations": {

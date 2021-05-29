@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from '../common-service.service';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import {CommonServiceService} from '../common-service.service';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {SlickCarouselComponent} from 'ngx-slick-carousel';
+
 declare const $: any;
 
 export interface Doctors {
@@ -84,6 +85,7 @@ export class HomeOneComponent implements OnInit {
       name: 'Switzerland',
     },
   ];
+
   constructor(
     public router: Router,
     public commonService: CommonServiceService
@@ -103,12 +105,14 @@ export class HomeOneComponent implements OnInit {
     this.getblogs();
 
     // User's voice slider
-    $('.testi-slider').each(function () {
+    $('.testi-slider').each(function() {
       var $show = $(this).data('show');
       var $arr = $(this).data('arrow');
       var $dots = !$arr;
       var $m_show = $show;
-      if ($show == 3) $m_show = $show - 1;
+      if ($show == 3) {
+        $m_show = $show - 1;
+      }
       $(this).slick({
         slidesToShow: $show,
         slidesToScroll: 1,
@@ -153,6 +157,7 @@ export class HomeOneComponent implements OnInit {
       });
     });
   }
+
   private _filterEmployees(value: string): Doctors[] {
     const filterValue = value.toLowerCase();
     return this.doctors.filter(
@@ -425,6 +430,7 @@ export class HomeOneComponent implements OnInit {
     infinite: true,
     variableWidth: true,
   };
+
   nextslide() {
     this.slickModal2.slickNext();
   }

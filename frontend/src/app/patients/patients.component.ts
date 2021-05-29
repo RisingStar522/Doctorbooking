@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Event, NavigationStart, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Event, NavigationStart, Router} from '@angular/router';
 
-import { CommonServiceService } from './../common-service.service';
+import {CommonServiceService} from './../common-service.service';
 
 @Component({
   selector: 'app-patients',
@@ -13,6 +13,7 @@ export class PatientsComponent implements OnInit {
   base = 'Patients';
   page = 'Dashboard';
   patientSidebar: boolean = false;
+
   constructor(
     private router: Router,
     public commonService: CommonServiceService
@@ -38,7 +39,7 @@ export class PatientsComponent implements OnInit {
           this.patientSidebar = false;
         }
       }
-    });    
+    });
   }
 
   ngOnInit(): void {

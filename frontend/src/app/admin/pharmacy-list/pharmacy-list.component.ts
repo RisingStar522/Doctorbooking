@@ -6,8 +6,8 @@ import {
   ViewChild,
   TemplateRef,
 } from '@angular/core';
-import { CommonServiceService } from '../../common-service.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../common-service.service';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import * as $ from 'jquery';
 
 @Component({
@@ -22,10 +22,12 @@ export class PharmacyListComponent implements OnInit {
   name;
   id;
   key;
+
   constructor(
     private commonService: CommonServiceService,
     private modalService: BsModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getPharmacy();
@@ -35,11 +37,11 @@ export class PharmacyListComponent implements OnInit {
     this.commonService.getPharmacy().subscribe(
       (data: any[]) => {
         this.pharmacyList = data;
-        $(function () {
+        $(function() {
           $('table').DataTable();
         });
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = <any> error)
     );
   }
 

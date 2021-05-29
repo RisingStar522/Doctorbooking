@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BasicInputsRoutingModule } from './basic-inputs-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BasicInputsRoutingModule} from './basic-inputs-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { BasicInputsRoutingModule } from './basic-inputs-routing.module';
     BasicInputsRoutingModule
   ]
 })
-export class BasicInputsModule { }
+export class BasicInputsModule {
+}

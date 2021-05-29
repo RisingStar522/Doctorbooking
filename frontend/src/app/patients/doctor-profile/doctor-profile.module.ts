@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DoctorProfileRoutingModule } from './doctor-profile-routing.module';
-import { DoctorProfileComponent } from './doctor-profile.component';
-import { CrystalLightboxModule } from '@crystalui/angular-lightbox';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DoctorProfileRoutingModule} from './doctor-profile-routing.module';
+import {DoctorProfileComponent} from './doctor-profile.component';
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
 
 @NgModule({
   declarations: [DoctorProfileComponent],
@@ -12,4 +12,5 @@ import { CrystalLightboxModule } from '@crystalui/angular-lightbox';
     CrystalLightboxModule
   ]
 })
-export class DoctorProfileModule { }
+export class DoctorProfileModule {
+}

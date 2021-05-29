@@ -10,20 +10,21 @@ body { margin: 0;     font-family: "Poppins",sans-serif; }*/
     font-style: normal;
   }*/
 .angular-tag.default-tag {
-	background-color: #009efb !important
+  background-color: #009efb !important
 }
+
 .angular-tags-input {
-	border-color: #dcdcdc;
-    box-shadow: inherit;
-    width: 100%;
-    border-radius: 0;
-	background-color: #fff;
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 4px 6px;
-    color: #555;
-    vertical-align: middle;
-    max-width: 100%;
-    line-height: 22px;
-    cursor: text;
+  border-color: #dcdcdc;
+  box-shadow: inherit;
+  width: 100%;
+  border-radius: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 4px 6px;
+  color: #555;
+  vertical-align: middle;
+  max-width: 100%;
+  line-height: 22px;
+  cursor: text;
 }

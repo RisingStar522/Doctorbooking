@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import {  InvoiceReportsComponent  } from './invoice-reports.component';
+import {InvoiceReportsComponent} from './invoice-reports.component';
 
 const routes: Routes = [
-	{
-		path : '',
-		component : InvoiceReportsComponent
-	}
+  {
+    path: '',
+    component: InvoiceReportsComponent
+  }
 ];
 
 
@@ -15,4 +15,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class InvoiceReportsRoutingModule { }
+export class InvoiceReportsRoutingModule {
+}

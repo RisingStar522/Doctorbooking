@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import 'datatables.net';
 
@@ -9,7 +9,9 @@ import 'datatables.net';
 })
 export class AdminDataTableComponent implements OnInit {
   datatable: any;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     const table: any = $('table');

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonServiceService } from '../../common-service.service'
+import {Component, OnInit} from '@angular/core';
+import {CommonServiceService} from '../../common-service.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -11,7 +11,8 @@ export class PatientsComponent implements OnInit {
   patientsList: any = [];
   errorMessage: string;
 
-  constructor(public commonService: CommonServiceService) { }
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getPatients();
@@ -20,12 +21,12 @@ export class PatientsComponent implements OnInit {
   getPatients() {
     this.commonService.getpatients()
       .subscribe(res => {
-        this.patientsList = res;
-        $(function () {
-          $("table").DataTable();
-        });
-      },
-        error => this.errorMessage = <any>error);
+          this.patientsList = res;
+          $(function() {
+            $('table').DataTable();
+          });
+        },
+        error => this.errorMessage = <any> error);
   }
 
 }

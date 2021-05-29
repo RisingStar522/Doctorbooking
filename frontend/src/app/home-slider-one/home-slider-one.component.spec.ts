@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { HomeSliderOneComponent } from './home-slider-one.component';
+import {HomeSliderOneComponent} from './home-slider-one.component';
 
 describe('HomeSliderOneComponent', () => {
   let component: HomeSliderOneComponent;
@@ -8,9 +8,9 @@ describe('HomeSliderOneComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeSliderOneComponent ]
+      declarations: [HomeSliderOneComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

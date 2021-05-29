@@ -57,7 +57,6 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-    console.log(req.body);
     User.findOne({
             email: req.body.username
         })
@@ -153,7 +152,6 @@ exports.signup_admin = (req, res) => {
 };
 
 exports.signin_admin = (req, res) => {
-    console.log(req.body)
     administratorsSchema.findOne({
             email: req.body.username
         })

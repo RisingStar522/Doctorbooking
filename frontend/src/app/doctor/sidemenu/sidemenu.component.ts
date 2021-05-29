@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   Event,
   NavigationStart,
@@ -6,7 +6,7 @@ import {
   ActivatedRoute,
 } from '@angular/router';
 
-import { CommonServiceService } from './../../common-service.service';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -18,6 +18,7 @@ export class SidemenuComponent implements OnInit {
   splitVal;
   base;
   page;
+
   constructor(
     private router: Router,
     public commonService: CommonServiceService
@@ -33,7 +34,8 @@ export class SidemenuComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   logout() {
     localStorage.clear();

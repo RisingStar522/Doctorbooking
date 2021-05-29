@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
-import { Router } from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MapInfoWindow, MapMarker, GoogleMap} from '@angular/google-maps';
+import {Router} from '@angular/router';
 import * as $ from 'jquery';
-import { ResizedEvent } from 'angular-resize-event';
+import {ResizedEvent} from 'angular-resize-event';
 
 @Component({
   selector: 'app-map-grid',
@@ -178,7 +178,10 @@ export class MapGridComponent implements OnInit {
       image: 'assets/img/doctors/doctor-12.jpg',
     },
   ];
-  constructor(public Router: Router) {}
+
+  constructor(public Router: Router) {
+  }
+
   images = [
     {
       path: 'assets/img/features/feature-01.jpg',
@@ -193,6 +196,7 @@ export class MapGridComponent implements OnInit {
       path: 'assets/img/features/feature-04.jpg',
     },
   ];
+
   ngOnInit(): void {
     this.initilize();
   }
@@ -203,6 +207,7 @@ export class MapGridComponent implements OnInit {
     document.getElementById('list-view').classList.remove('active');
     document.getElementById('grid-view').classList.add('active');
   }
+
   mapListClick() {
     this.mapGrid = false;
     this.mapList = true;
@@ -266,7 +271,7 @@ export class MapGridComponent implements OnInit {
     this.bounds = new google.maps.LatLngBounds();
     const mapOptions = {
       zoom: 14,
-      center: { lat: 53.470692, lng: -2.220328 },
+      center: {lat: 53.470692, lng: -2.220328},
       scrollwheel: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
@@ -285,6 +290,7 @@ export class MapGridComponent implements OnInit {
     // });
     // this.slider = window.setTimeout(this.show, 3000);
   }
+
   setMarkers(map, locations) {
     for (var i = 0; i < locations.length; i++) {
       let item = locations[i];
@@ -301,8 +307,10 @@ export class MapGridComponent implements OnInit {
       });
     }
     map.fitBounds(this.bounds);
-    google.maps.event.addListener(map, 'zoom_changed', function () {
-      if (map.zoom > 16) map.slide = false;
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      if (map.zoom > 16) {
+        map.slide = false;
+      }
     });
   }
 

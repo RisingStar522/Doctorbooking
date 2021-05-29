@@ -1,10 +1,13 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommonServiceService } from '../../common-service.service';
-import { TokenStorageService } from '../services/token-storage.service';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../common-service.service';
+import {TokenStorageService} from '../services/token-storage.service';
+import {AuthService} from '../services/auth.service';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-doc-profile',
   templateUrl: './doc-profile.component.html',
@@ -17,8 +20,10 @@ export class DocProfileComponent implements OnInit {
     private modalService: BsModalService,
     private tokenStorage: TokenStorageService,
     private commonService: CommonServiceService,
-    private toastr: ToastrService
-  ) { }
+    private toastr: ToastrService,
+  ) {
+  }
+
   modalRef: BsModalRef;
   userEmail;
   userinfo = [];
@@ -40,9 +45,43 @@ export class DocProfileComponent implements OnInit {
   zipcode;
   country;
 
-  oldpassword
+  oldpassword;
   password;
   confirmpass;
+  imageSrc: String;
+
+  selectedFile: File = null;
+;
+  fd = new FormData();
+
+
+  myForm = new FormGroup({
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
+  });
+
+
+  get f() {
+    return this.myForm.controls;
+  }
+
+  onFileChange(event) {
+    this.selectedFile = <File> event.target.files[0];
+    this.fd.append('uploadfile', this.selectedFile, this.selectedFile.name);
+
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+        this.myForm.patchValue({
+          fileSource: reader.result
+        });
+        console.log(this.myForm);
+      };
+    }
+  }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -55,9 +94,16 @@ export class DocProfileComponent implements OnInit {
     this.commonService.getUserinfo(this.userEmail).subscribe(
       (data: any[]) => {
         this.userinfo = data[0];
+
+        if (this.userinfo['avatar'] != null && this.userinfo['avatar'] != '') {
+          this.imageSrc = this.userinfo['avatar'];
+        } else {
+          this.imageSrc = 'assets/img/doctors/doctor-thumb-01.jpg';
+        }
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = <any> error)
     );
+
   }
 
   editTop() {
@@ -67,18 +113,34 @@ export class DocProfileComponent implements OnInit {
     document.getElementById('pass').classList.remove('active');
   }
 
-  updatePassword(){
-    if(this.password != this.confirmpass){
+  createFormData(event) {
+    this.selectedFile = <File> event.target.files[0];
+    this.fd.append('uploadfile', this.selectedFile, this.selectedFile.name);
+  }
+
+  save() {
+    this.fd.append('email', this.userEmail);
+    this.commonService.adminAvatarChange(this.fd).subscribe((data: any[]) => {
+      this.modalRef.hide();
+      this.getAdminInfo();
+      this.toastr.success('', 'Successfully changed!');
+    });
+    this.modalRef.hide();
+    console.log(this.fd);
+  }
+
+  updatePassword() {
+    if (this.password != this.confirmpass) {
       this.toastr.error('', 'New password does not match !');
-    }else{
-      this.authService.updatePassword(this.userEmail, this.oldpassword, this.confirmpass).subscribe(
+    } else {
+      this.authService.updatePassword(this.userEmail, this.oldpassword, this.password).subscribe(
         data => {
-          console.log("data = ", data);
-          if(data.status != "failed"){
+          console.log('data = ', data);
+          if (data.status != 'failed') {
             this.tokenStorage.saveToken(data.accessToken);
             this.toastr.success('', 'Successfully updated!');
             this.getAdminInfo();
-          }else{
+          } else {
             this.toastr.error('', data.msg);
           }
         },
@@ -90,14 +152,13 @@ export class DocProfileComponent implements OnInit {
   }
 
   topEditModal(template: TemplateRef<any>, user) {
-    // this.id = user._id;
-    // this.name = user.firstname + user.lastname;
+    this.id = user._id;
     this.modalRef = this.modalService.show(template, {
       class: 'modal-dialog modal-dialog-centered',
     });
   }
 
-  editDetailsModal(template: TemplateRef<any>, user){
+  editDetailsModal(template: TemplateRef<any>, user) {
     this.userid = user._id;
     this.firstname = user.firstname;
     this.lastname = user.lastname;
@@ -116,23 +177,23 @@ export class DocProfileComponent implements OnInit {
 
   updateDetails() {
     let params = {
-      firstname : this.firstname,
-      lastname : this.lastname,
-      birth : this.birth,
-      email : this.email,
-      phone : this.phone,
-      address : this.address,
-      city : this.city,
-      state : this.state,
-      zipcode : this.zipcode,
-      country : this.country,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      birth: this.birth,
+      email: this.email,
+      phone: this.phone,
+      address: this.address,
+      city: this.city,
+      state: this.state,
+      zipcode: this.zipcode,
+      country: this.country,
     };
     let datas = {
-      itemid : this.userid,
-      param : params
-    }
+      itemid: this.userid,
+      param: params
+    };
     console.log(datas);
-    this.commonService.updateAdminInfo(datas).subscribe((data : any[])=>{
+    this.commonService.updateAdminInfo(datas).subscribe((data: any[]) => {
       this.modalRef.hide();
       this.getAdminInfo();
     });
@@ -145,6 +206,7 @@ export class DocProfileComponent implements OnInit {
     document.getElementById('about').classList.add('active');
     document.getElementById('pass').classList.remove('active');
   }
+
   pass() {
     this.changePass = true;
     this.personalDetails = false;

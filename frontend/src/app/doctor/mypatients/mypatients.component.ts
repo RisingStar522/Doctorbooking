@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {CommonServiceService  } from './../../common-service.service';
+import {Component, OnInit} from '@angular/core';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-mypatients',
@@ -7,11 +7,12 @@ import {CommonServiceService  } from './../../common-service.service';
   styleUrls: ['./mypatients.component.css']
 })
 export class MypatientsComponent implements OnInit {
-  
-  appointments : any = [];
-  patients :  any = [];
-  
-  constructor(public commonService:CommonServiceService) { }
+
+  appointments: any = [];
+  patients: any = [];
+
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getPatients();
@@ -21,24 +22,24 @@ export class MypatientsComponent implements OnInit {
 
   getAppointments() {
     this.commonService.getAppointments()
-      .subscribe(res=>{
+      .subscribe(res => {
         this.appointments = res;
         let scope = this;
-        this.appointments.forEach(index=>{
-          let filter = scope.patients.filter(a=>a.key === index.patient_key);
-          if(filter.length != 0) {
+        this.appointments.forEach(index => {
+          let filter = scope.patients.filter(a => a.key === index.patient_key);
+          if (filter.length != 0) {
             index['patients'] = filter[0];
           }
-        })
-        this.appointments = this.appointments.filter(a=>a.status === 'accept');
-      })
+        });
+        this.appointments = this.appointments.filter(a => a.status === 'accept');
+      });
   }
 
   getPatients() {
     this.commonService.getpatients()
-    .subscribe(res=>{
-      this.patients = res;
-    })
+      .subscribe(res => {
+        this.patients = res;
+      });
   }
 
 }

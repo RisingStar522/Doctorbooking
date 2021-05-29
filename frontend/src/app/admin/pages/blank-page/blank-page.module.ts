@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BlankPageComponent } from './blank-page.component';
-import { BlankPageRoutingModule } from './blank-page-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BlankPageComponent} from './blank-page.component';
+import {BlankPageRoutingModule} from './blank-page-routing.module';
 
 @NgModule({
   declarations: [BlankPageComponent],
@@ -10,4 +10,5 @@ import { BlankPageRoutingModule } from './blank-page-routing.module';
     BlankPageRoutingModule
   ]
 })
-export class BlankPageModule { }
+export class BlankPageModule {
+}

@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BookingRoutingModule } from './booking-routing.module';
-import { BookingComponent } from './booking.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Daterangepicker } from 'ng2-daterangepicker';
+import {BookingRoutingModule} from './booking-routing.module';
+import {BookingComponent} from './booking.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Daterangepicker} from 'ng2-daterangepicker';
 
 @NgModule({
   declarations: [BookingComponent],
@@ -15,4 +15,5 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     Daterangepicker
   ]
 })
-export class BookingModule { }
+export class BookingModule {
+}

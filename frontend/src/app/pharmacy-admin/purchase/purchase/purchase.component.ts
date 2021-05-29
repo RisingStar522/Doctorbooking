@@ -1,6 +1,6 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommonServiceService } from '../../../common-service.service';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../../common-service.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -15,10 +15,12 @@ export class PurchaseComponent implements OnInit {
   name;
   id;
   key;
+
   constructor(
     private commonService: CommonServiceService,
     private modalService: BsModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getPurchase();
@@ -28,11 +30,11 @@ export class PurchaseComponent implements OnInit {
     this.commonService.getPurchase().subscribe(
       (data: any[]) => {
         this.purchase_list = data;
-        $(function () {
+        $(function() {
           $('table').DataTable();
         });
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = <any> error)
     );
   }
 

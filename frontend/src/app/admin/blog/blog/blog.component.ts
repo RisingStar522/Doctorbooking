@@ -1,6 +1,6 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommonServiceService } from '../../../common-service.service'
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../../common-service.service';
 
 @Component({
   selector: 'app-blog',
@@ -8,9 +8,11 @@ import { CommonServiceService } from '../../../common-service.service'
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-	blogs: any = [];
+  blogs: any = [];
   firstBlock: any = [];
-  constructor(public commonService: CommonServiceService) {}
+
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getBlogs();

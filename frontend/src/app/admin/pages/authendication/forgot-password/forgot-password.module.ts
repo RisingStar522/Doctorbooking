@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ForgotPasswordComponent } from './forgot-password.component';
-import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ForgotPasswordComponent} from './forgot-password.component';
+import {ForgotPasswordRoutingModule} from './forgot-password-routing.module';
 
 @NgModule({
   declarations: [ForgotPasswordComponent],
@@ -10,4 +10,5 @@ import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
     ForgotPasswordRoutingModule
   ]
 })
-export class ForgotPasswordModule { }
+export class ForgotPasswordModule {
+}

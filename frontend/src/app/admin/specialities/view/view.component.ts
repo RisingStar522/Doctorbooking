@@ -1,6 +1,6 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommonServiceService } from '../../../common-service.service';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../../common-service.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -22,14 +22,15 @@ export class ViewComponent implements OnInit {
   constructor(
     private commonService: CommonServiceService,
     private modalService: BsModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getSpecialityList();
   }
 
   createFormData(event) {
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = <File> event.target.files[0];
     this.fd.append('uploadfile', this.selectedFile, this.selectedFile.name);
   }
 
@@ -37,11 +38,11 @@ export class ViewComponent implements OnInit {
     this.commonService.getSpeciality().subscribe(
       (data: any[]) => {
         this.speciality = data['result'];
-        $(function () {
+        $(function() {
           $('table').DataTable();
         });
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = <any> error)
     );
   }
 
@@ -67,11 +68,20 @@ export class ViewComponent implements OnInit {
   }
 
   save() {
-    this.fd.append("speciality",this.name);
-    this.commonService.createSpeciality(this.fd).subscribe((data : any[])=>{
+    this.fd.append('speciality', this.name);
+    this.commonService.createSpeciality(this.fd).subscribe((data: any[]) => {
       this.modalRef.hide();
       this.getSpecialityList();
-    })
+    });
+    this.modalRef.hide();
+  }
+
+  updateAdminAvatar() {
+    this.fd.append('_id', this.id);
+    this.commonService.createSpeciality(this.fd).subscribe((data: any[]) => {
+      this.modalRef.hide();
+      this.getSpecialityList();
+    });
     this.modalRef.hide();
   }
 
@@ -80,7 +90,7 @@ export class ViewComponent implements OnInit {
       id: this.id,
       speciality: this.name,
     };
-    this.commonService.updateSpeciality(params).subscribe((data : any[])=>{
+    this.commonService.updateSpeciality(params).subscribe((data: any[]) => {
       this.modalRef.hide();
       this.getSpecialityList();
     });

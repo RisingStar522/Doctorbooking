@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from '../common-service.service';
+import {CommonServiceService} from '../common-service.service';
 
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   patients: any = [];
   username = '';
   password = '';
+
   constructor(
     public router: Router,
     public commonService: CommonServiceService,

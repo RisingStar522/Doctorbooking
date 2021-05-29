@@ -12,9 +12,10 @@ import {
   ActivatedRoute,
   Params,
 } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
-import { CommonServiceService } from '../common-service.service';
-import { TokenStorageService } from './services/token-storage.service';
+import {DOCUMENT} from '@angular/common';
+import {CommonServiceService} from '../common-service.service';
+import {TokenStorageService} from './services/token-storage.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -25,6 +26,7 @@ export class AdminComponent implements OnInit {
   adminShow: boolean = true;
   isLoggedIn: boolean = false;
   roles: string[] = [];
+
   constructor(
     @Inject(DOCUMENT) private document,
     public commonService: CommonServiceService,
@@ -49,6 +51,7 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+
   ngOnInit(): void {
     this.commonService.nextmessage('admin');
     let scope = this;
@@ -58,7 +61,7 @@ export class AdminComponent implements OnInit {
       setTimeout(() => {
         scope.Router.navigateByUrl('/admin/dashboard');
       }, 100);
-    }else{
+    } else {
       setTimeout(() => {
         scope.Router.navigateByUrl('/admin/login-form');
       }, 100);

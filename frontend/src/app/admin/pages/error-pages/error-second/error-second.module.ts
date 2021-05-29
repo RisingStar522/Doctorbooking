@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ErrorSecondRoutingModule } from './error-second-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ErrorSecondRoutingModule} from './error-second-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { ErrorSecondRoutingModule } from './error-second-routing.module';
     ErrorSecondRoutingModule
   ]
 })
-export class ErrorSecondModule { }
+export class ErrorSecondModule {
+}

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CommonServiceService } from './../../common-service.service';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-booking',
@@ -16,7 +16,7 @@ export class BookingComponent implements OnInit {
   // see original project for full list of options
   // can also be setup using the config service to apply to multiple pickers
   public options: any = {
-    locale: { format: 'YYYY-MM-DD' },
+    locale: {format: 'YYYY-MM-DD'},
     alwaysShowCalendars: false,
   };
 
@@ -34,7 +34,8 @@ export class BookingComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public commonService: CommonServiceService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     if (this.route.snapshot.queryParams['id']) {

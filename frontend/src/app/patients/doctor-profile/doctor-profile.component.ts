@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CommonServiceService } from './../../common-service.service';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import {CommonServiceService} from './../../common-service.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -11,11 +11,14 @@ import { ToastrService } from 'ngx-toastr';
 export class DoctorProfileComponent implements OnInit {
   id;
   doctorDetails;
+
   constructor(
     public commonService: CommonServiceService,
     private route: ActivatedRoute,
     private toastr: ToastrService
-  ) {}
+  ) {
+  }
+
   images = [
     {
       path: 'assets/img/features/feature-01.jpg',
@@ -30,6 +33,7 @@ export class DoctorProfileComponent implements OnInit {
       path: 'assets/img/features/feature-04.jpg',
     },
   ];
+
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.id = this.route.snapshot.queryParams['id'];

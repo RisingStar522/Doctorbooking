@@ -29,12 +29,13 @@ exports.getAdmin = async(req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.status(200).send({ items: result });
+            res.status(200).send(result);
         }
     })
 }
 
 exports.getAdminProfile = async(req, res) => {
+    // console.log(req.body);
     var query = {};
     query['_id'] = req.body.itemid;
     administratorsSchema.find(query).exec(function(err, result) {
@@ -414,6 +415,23 @@ exports.saveMember = (req, res) => {
     );
 };
 
+exports.updateAdminDetails = (req, res) => {
+   
+    administratorsSchema.updateOne({ _id: req.body.itemid }, { $set: req.body.param },
+        function(err, result) {
+            if (err) {
+                res.send({
+                    status: "failed",
+                    data: {},
+                    msg: `Something went wrong ${err}`,
+                });
+                return;
+            }
+
+            res.status(200).send({ status: "success", data: {}, msg: "Save User Data" });
+        }
+    );
+};
 
 exports.deleteadmin = (req, res) => {
     administratorsSchema.deleteOne({ _id: req.body.selId }, function(err, results) {
@@ -454,13 +472,14 @@ exports.deleteUser = (req, res) => {
 }
 
 exports.changePwd = (req, res) => {
+    userEmail = req.body.username;
     oldpassword = req.body.oldpassword;
     newpassword = req.body.newpassword;
     const admin = {
         password: bcrypt.hashSync(newpassword, 8)
     };
-
-    administratorsSchema.find({ _id: req.body.itemid }).exec(function(err, result) {
+    console.log(admin)
+    administratorsSchema.find({ email: userEmail }).exec(function(err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -472,7 +491,7 @@ exports.changePwd = (req, res) => {
             if (!passwordIsValid) {
                 return res.status(200).send({ status: "failed", data: {}, msg: "Old Password does not match!" });
             } else {
-                administratorsSchema.updateOne({ _id: req.body.itemid }, { $set: admin },
+                administratorsSchema.updateOne({ email: userEmail }, { $set: admin },
                     function(err, result) {
                         if (err) {
                             res.send({
@@ -612,43 +631,28 @@ exports.editUserAvatar = (req, res) => {
 
 
 exports.editAdminAvatar = (req, res) => {
-    if (req.body.ischange == "yes") {
-        const admin = {
-            description: req.body.description,
-            avatar: req.file.filename
-        };
-        administratorsSchema.updateOne({ _id: req.body.itemid }, { $set: admin },
-            function(err, result) {
-                if (err) {
-                    res.send({
-                        status: "failed",
-                        data: {},
-                        msg: `Something went wrong ${err}`,
-                    });
-                    return;
-                }
-                res.status(200).send({ status: "success", data: {}, msg: "Successfuly changed." });
+
+    filepath = req.file.path;
+    
+    avatar = filepath.replace('..\\frontend\\src\\assets', 'assets');
+    const admin = new administratorsSchema({
+      avatar: avatar,
+    });
+    administratorsSchema.updateOne({ email: req.body.email }, { avatar: avatar },
+        function(err, result) {
+            if (err) {
+                res.send({
+                    status: "failed",
+                    data: {},
+                    msg: `Something went wrong ${err}`,
+                });
+                return;
             }
-        );
-    } else {
-        const admin = {
-            description: req.body.description,
-            avatar: req.body.oldfile
-        };
-        administratorsSchema.updateOne({ _id: req.body.itemid }, { $set: admin },
-            function(err, result) {
-                if (err) {
-                    res.send({
-                        status: "failed",
-                        data: {},
-                        msg: `Something went wrong ${err}`,
-                    });
-                    return;
-                }
-                res.status(200).send({ status: "success", data: {}, msg: "Successfuly changed." });
-            }
-        );
-    }
+            res.status(200).send({ status: "success", data: {}, msg: "Successfuly changed." });
+        }
+    );
+
+   
 }
 
 exports.editUserProfile = (req, res) => {

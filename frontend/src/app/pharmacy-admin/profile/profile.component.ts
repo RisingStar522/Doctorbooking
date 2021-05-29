@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(private Router: Router) {}
+  constructor(private Router: Router) {
+  }
+
   changePass = false;
   personalDetails = true;
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+  }
 
   about() {
     this.changePass = false;
@@ -18,6 +22,7 @@ export class ProfileComponent implements OnInit {
     document.getElementById('about').classList.add('active');
     document.getElementById('pass').classList.remove('active');
   }
+
   pass() {
     this.changePass = true;
     this.personalDetails = false;

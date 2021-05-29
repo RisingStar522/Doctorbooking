@@ -1,6 +1,6 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { CommonServiceService } from '../../common-service.service';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
+import {CommonServiceService} from '../../common-service.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -13,7 +13,9 @@ export class TransactionsComponent implements OnInit {
   transactionsList: any = [];
   errorMessage: string;
   id;
-  constructor(public commonService: CommonServiceService, private modalService: BsModalService) { }
+
+  constructor(public commonService: CommonServiceService, private modalService: BsModalService) {
+  }
 
   ngOnInit(): void {
     this.getPharmacyTransactions();
@@ -21,7 +23,7 @@ export class TransactionsComponent implements OnInit {
 
   deleteModal(template: TemplateRef<any>, transaction) {
     this.id = transaction.id;
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm modal-dialog-centered' });
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm modal-dialog-centered'});
   }
 
   deleteTrans() {
@@ -32,17 +34,17 @@ export class TransactionsComponent implements OnInit {
   decline() {
     this.modalRef.hide();
   }
-  
+
 
   getPharmacyTransactions() {
     this.commonService.getPharmacyTransactions()
       .subscribe(res => {
-        this.transactionsList = res;
-        $(function () {
-          $("table").DataTable();
-        });
-      },
-        error => this.errorMessage = <any>error);
+          this.transactionsList = res;
+          $(function() {
+            $('table').DataTable();
+          });
+        },
+        error => this.errorMessage = <any> error);
   }
 
 }

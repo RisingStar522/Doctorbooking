@@ -12,9 +12,9 @@ import {
   ActivatedRoute,
   NavigationEnd,
 } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 
-import { CommonServiceService } from './../../common-service.service';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   headerTop: boolean = false;
   base;
   url1;
+
   constructor(
     @Inject(DOCUMENT) private document,
     private cdr: ChangeDetectorRef,
@@ -84,6 +85,7 @@ export class HeaderComponent implements OnInit {
     this.cdr.detectChanges();
     this.loadDynmicallyScript('assets/js/script.js');
   }
+
   loadDynmicallyScript(js) {
     var script = document.createElement('script');
     script.src = js;
@@ -91,7 +93,10 @@ export class HeaderComponent implements OnInit {
     document.head.appendChild(script);
     script.onload = () => this.doSomethingWhenScriptIsLoaded();
   }
-  doSomethingWhenScriptIsLoaded() {}
+
+  doSomethingWhenScriptIsLoaded() {
+  }
+
   change(name) {
     this.page = name;
     this.commonService.nextmessage('main');

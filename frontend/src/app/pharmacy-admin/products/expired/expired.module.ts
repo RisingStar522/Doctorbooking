@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DataTablesModule } from 'angular-datatables';
-import { ExpiredComponent } from './expired.component';
-import { ExpiredRoutingModule } from './expired-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DataTablesModule} from 'angular-datatables';
+import {ExpiredComponent} from './expired.component';
+import {ExpiredRoutingModule} from './expired-routing.module';
 
 @NgModule({
   declarations: [ExpiredComponent],
@@ -12,4 +12,5 @@ import { ExpiredRoutingModule } from './expired-routing.module';
     DataTablesModule
   ]
 })
-export class ExpiredModule { }
+export class ExpiredModule {
+}

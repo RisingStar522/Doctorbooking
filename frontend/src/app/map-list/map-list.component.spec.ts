@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { MapListComponent } from './map-list.component';
+import {MapListComponent} from './map-list.component';
 
 describe('MapListComponent', () => {
   let component: MapListComponent;
@@ -8,9 +8,9 @@ describe('MapListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapListComponent ]
+      declarations: [MapListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

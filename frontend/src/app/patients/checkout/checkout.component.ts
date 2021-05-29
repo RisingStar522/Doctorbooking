@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { ToastrService } from 'ngx-toastr';
-import { CommonServiceService } from './../../common-service.service';
+import {ToastrService} from 'ngx-toastr';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +24,8 @@ export class CheckoutComponent implements OnInit {
     private route: ActivatedRoute,
     public commonService: CommonServiceService,
     private toastr: ToastrService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.doctorId = this.route.snapshot.queryParams['id'];

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from '../common-service.service';
+import {CommonServiceService} from '../common-service.service';
 
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -19,11 +19,13 @@ export class RegisterComponent implements OnInit {
   patients: any = [];
   reg_type = 'Patient Register';
   doc_patient = 'Are you a Doctor?';
+
   constructor(
     private toastr: ToastrService,
     public commonService: CommonServiceService,
     public router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getpatients();

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonServiceService } from '../common-service.service';
+import {Component, OnInit} from '@angular/core';
+import {CommonServiceService} from '../common-service.service';
 
 @Component({
   selector: 'app-blog-grid',
@@ -9,7 +9,9 @@ import { CommonServiceService } from '../common-service.service';
 export class BlogGridComponent implements OnInit {
   blogs: any = [];
   blog = false;
-  constructor(public commonService: CommonServiceService) {}
+
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getBlogs();

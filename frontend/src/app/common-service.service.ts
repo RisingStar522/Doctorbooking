@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +57,7 @@ export class CommonServiceService {
   messages: '';
   SERVER_URL: string = 'http://localhost:3000/api/';
   message: BehaviorSubject<String>;
+
   constructor(public http: HttpClient) {
     this.message = new BehaviorSubject(this.messages);
   }
@@ -78,13 +79,17 @@ export class CommonServiceService {
   }
 
   doctorStatus(data) {
-    return this.http.post(`${this.SERVER_URL + 'user/doctorStatus'}`,data);
+    return this.http.post(`${this.SERVER_URL + 'user/doctorStatus'}`, data);
   }
 
   getUserinfo(user) {
     var userinfo = {};
-    userinfo = {"email":user};
-    return this.http.post(`${this.SERVER_URL + 'user/getAdmin'}`,userinfo);
+    userinfo = {'email': user};
+    return this.http.post(`${this.SERVER_URL + 'user/getAdmin'}`, userinfo);
+  }
+
+  adminAvatarChange(data) {
+    return this.http.post(`${this.SERVER_URL + 'user/editAdminAvatar'}`, data);
   }
 
   updateAdminInfo(data) {
@@ -99,14 +104,15 @@ export class CommonServiceService {
     return this.http.post(`${this.SERVER_URL + 'specialties/addSpecialties'}`, data);
   }
 
+
   updateSpeciality(data) {
     return this.http.post(`${this.SERVER_URL + 'specialties/editSpecialties'}/`, data);
   }
 
   deleteSpeciality(id) {
-    var data={};
-    data={"_id":id};
-    return this.http.post(`${this.SERVER_URL + 'specialties/deleteSpecialties'}`,data);
+    var data = {};
+    data = {'_id': id};
+    return this.http.post(`${this.SERVER_URL + 'specialties/deleteSpecialties'}`, data);
   }
 
   getDoctors() {
@@ -248,6 +254,7 @@ export class CommonServiceService {
   deleteSale(id) {
     return this.http.delete(`${this.SERVER_URL + 'sale'}/${id}`);
   }
+
   getPharmacyTransactions() {
     return this.http.get(this.SERVER_URL + 'pharmacy_transactions');
   }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CommonServiceService } from '../common-service.service';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import {CommonServiceService} from '../common-service.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog-details',
@@ -16,12 +16,14 @@ export class BlogDetailsComponent implements OnInit {
   name = '';
   email = '';
   usercomment = '';
+
   constructor(
     private toastr: ToastrService,
     public commonService: CommonServiceService,
     private route: ActivatedRoute,
     public router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.queryParams['id'];
@@ -50,7 +52,7 @@ export class BlogDetailsComponent implements OnInit {
   }
 
   navigate(blog) {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigateByUrl('/blog-details?id=' + blog.id);
     });
   }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from './../../common-service.service';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -10,12 +10,15 @@ import { CommonServiceService } from './../../common-service.service';
 })
 export class SidemenuComponent implements OnInit {
   name;
+
   constructor(
     private router: Router,
     public commonService: CommonServiceService
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   logout() {
     localStorage.clear();

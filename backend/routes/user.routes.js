@@ -16,6 +16,8 @@ module.exports = function(app, upload) {
 
     app.post("/api/user/getAdminProfile", userController.getAdminProfile);
 
+    app.post("/api/user/updateAdminDetails", userController.updateAdminDetails);
+
     app.post("/api/user/editAdminAvatar", upload.single("uploadfile"), userController.editAdminAvatar);
 
     app.post("/api/user/editUserAvatar", upload.single("uploadfile"), userController.editUserAvatar);

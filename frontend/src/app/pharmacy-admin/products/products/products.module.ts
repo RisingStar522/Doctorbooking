@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DataTablesModule } from 'angular-datatables';
-import { ProductsComponent } from './products.component';
-import { ProductsRoutingModule } from './products-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DataTablesModule} from 'angular-datatables';
+import {ProductsComponent} from './products.component';
+import {ProductsRoutingModule} from './products-routing.module';
 
 @NgModule({
   declarations: [ProductsComponent],
@@ -12,4 +12,5 @@ import { ProductsRoutingModule } from './products-routing.module';
     DataTablesModule
   ]
 })
-export class ProductsModule { }
+export class ProductsModule {
+}

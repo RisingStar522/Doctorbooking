@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AppointmentsRoutingModule } from './appointments-routing.module';
-import { AppointmentsComponent } from './appointments.component';
-import { DataTablesModule } from 'angular-datatables';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AppointmentsRoutingModule} from './appointments-routing.module';
+import {AppointmentsComponent} from './appointments.component';
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [AppointmentsComponent],
@@ -12,4 +12,5 @@ import { DataTablesModule } from 'angular-datatables';
     DataTablesModule
   ]
 })
-export class AppointmentsModule { }
+export class AppointmentsModule {
+}

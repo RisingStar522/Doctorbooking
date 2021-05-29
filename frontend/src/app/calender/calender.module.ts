@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CalenderRoutingModule } from './calender-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CalenderRoutingModule} from './calender-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { CalenderRoutingModule } from './calender-routing.module';
     CalenderRoutingModule
   ]
 })
-export class CalenderModule { }
+export class CalenderModule {
+}

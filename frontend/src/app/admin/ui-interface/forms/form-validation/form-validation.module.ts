@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormValidationRoutingModule } from './form-validation-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormValidationRoutingModule} from './form-validation-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { FormValidationRoutingModule } from './form-validation-routing.module';
     FormValidationRoutingModule
   ]
 })
-export class FormValidationModule { }
+export class FormValidationModule {
+}

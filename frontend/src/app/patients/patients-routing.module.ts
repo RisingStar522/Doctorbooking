@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { PatientsComponent } from './patients.component';
+import {PatientsComponent} from './patients.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PatientsComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {
         path: 'dashboard',
         loadChildren: () =>
@@ -117,4 +117,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PatientsRoutingModule {}
+export class PatientsRoutingModule {
+}

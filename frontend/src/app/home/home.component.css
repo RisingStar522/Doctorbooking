@@ -1,27 +1,32 @@
 .ng-autocomplete {
-  width:100%;
+  width: 100%;
   max-width: 600px;
   display: table;
   margin: 0 auto;
 }
+
 .autocomplete-container {
-	box-shadow: none !important;
+  box-shadow: none !important;
 }
-.client-navbtn button{
-  background:transparent;
-  border:0;
+
+.client-navbtn button {
+  background: transparent;
+  border: 0;
 }
-.client-navbtn i{
+
+.client-navbtn i {
   font-size: 55px;
   line-height: 24px;
-  color:#FB6C42;
+  color: #FB6C42;
 }
+
 .desc-ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .autocomplete-container .input-container input {
   height: auto !important;
 }
@@ -49,17 +54,20 @@
   background: #ffffff;
   margin-bottom: 68px;
 }
-.client-slide{
-  background-color:#fff;
+
+.client-slide {
+  background-color: #fff;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 10px;
 }
-.content-blk p{
+
+.content-blk p {
   padding: 7px 13px 15px;
   font-size: 15px;
   line-height: 24px;
 }
-.author-info-blk p{
+
+.author-info-blk p {
   font-size: 16px;
   color: #000;
 }

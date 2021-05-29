@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {CommonServiceService  } from './../../common-service.service';
+import {Component, OnInit} from '@angular/core';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +7,11 @@ import {CommonServiceService  } from './../../common-service.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  appointments ;
-  patients ;
+  appointments;
+  patients;
 
-  constructor(public commonService:CommonServiceService) { }
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getPatients();
@@ -19,26 +20,25 @@ export class DashboardComponent implements OnInit {
 
   getAppointments() {
     this.commonService.getAppointments()
-      .subscribe(res=>{
+      .subscribe(res => {
         this.appointments = res;
         let scope = this;
-        this.appointments.forEach(index=>{
-          let filter = scope.patients.filter(a=>a.key === index.patient_key);
-          if(filter.length != 0) {
+        this.appointments.forEach(index => {
+          let filter = scope.patients.filter(a => a.key === index.patient_key);
+          if (filter.length != 0) {
             index['patients'] = filter[0];
           }
-        })
-       
-      })
+        });
+
+      });
   }
 
   getPatients() {
     this.commonService.getpatients()
-    .subscribe(res=>{
-      this.patients = res;
-    })
+      .subscribe(res => {
+        this.patients = res;
+      });
   }
 
 
- 
 }

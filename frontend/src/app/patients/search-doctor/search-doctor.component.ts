@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from './../../common-service.service'
-import { FormsModule } from '@angular/forms';
+import {CommonServiceService} from './../../common-service.service';
+import {FormsModule} from '@angular/forms';
 
 
 @Component({
@@ -14,10 +14,13 @@ export class SearchDoctorComponent implements OnInit {
   doctors: any = [];
   specialityList: any = [];
   type;
-  specialist = "";
+  specialist = '';
   speciality;
   selDate;
-  constructor(public commonService: CommonServiceService, public router: Router) { }
+
+  constructor(public commonService: CommonServiceService, public router: Router) {
+  }
+
   images = [
     {
       path: 'assets/img/features/feature-01.jpg',
@@ -32,6 +35,7 @@ export class SearchDoctorComponent implements OnInit {
       path: 'assets/img/features/feature-04.jpg',
     },
   ];
+
   ngOnInit(): void {
     this.getDoctors();
     this.getspeciality();
@@ -40,26 +44,26 @@ export class SearchDoctorComponent implements OnInit {
   getDoctors() {
     this.commonService.getDoctors().subscribe(res => {
       this.doctors = res;
-    })
+    });
   }
 
   getspeciality() {
     this.commonService.getSpeciality().subscribe(res => {
       this.specialityList = res;
-    })
+    });
   }
 
   checkType(event) {
     if (event.target.checked) {
       this.type = event.target.value;
     } else {
-      this.type = "";
+      this.type = '';
     }
   }
 
   search() {
     if (this.type && this.speciality) {
-      this.doctors = this.doctors.filter(a => a.type === this.type && a.speciality === this.speciality)
+      this.doctors = this.doctors.filter(a => a.type === this.type && a.speciality === this.speciality);
     } else {
       this.getDoctors();
     }
@@ -70,7 +74,7 @@ export class SearchDoctorComponent implements OnInit {
     if (event.target.checked) {
       this.speciality = event.target.value;
     } else {
-      this.speciality = "";
+      this.speciality = '';
     }
 
     var filter = this.specialityList.filter(a => a.speciality === event.target.value);
@@ -81,7 +85,7 @@ export class SearchDoctorComponent implements OnInit {
       if (index.speciality != event.target.value) {
         index['checked'] = false;
       }
-    })
+    });
   }
 
   bookAppointment(id) {

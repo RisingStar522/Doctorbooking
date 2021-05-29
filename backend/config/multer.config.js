@@ -7,7 +7,7 @@ const random = Str.random()
     // 'zONHF73w_4M3cmv7GZpXG'
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../frontend/resource/images/uploads')
+        cb(null, '../frontend/src/assets/img/uploads')
     },
     filename: (req, file, cb) => {
         cb(null, Str.random(20) + Date.now() + '.' + fileExtension(file.originalname))

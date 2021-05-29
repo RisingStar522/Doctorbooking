@@ -25,36 +25,36 @@
             <div class="table-responsive">
               <table class="datatable table table-hover table-center mb-0">
                 <thead>
-                  <tr>
-                    <th>Specialities</th>
-                    <th class="text-right">Actions</th>
-                  </tr>
+                <tr>
+                  <th>Specialities</th>
+                  <th class="text-right">Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let special of speciality">
-                    <!-- <td>{{special.key}}</td> -->
+                <tr *ngFor="let special of speciality">
+                  <!-- <td>{{special.key}}</td> -->
 
-                    <td>
-                      <h2 class="table-avatar">
-                        <a class="avatar avatar-sm mr-2">
-                          <img class="avatar-img" [src]="special.img" alt="Speciality">
-                        </a>
-                        <a>{{special.speciality}}</a>
-                      </h2>
-                    </td>
+                  <td>
+                    <h2 class="table-avatar">
+                      <a class="avatar avatar-sm mr-2">
+                        <img class="avatar-img" [src]="special.img" alt="Speciality">
+                      </a>
+                      <a>{{special.speciality}}</a>
+                    </h2>
+                  </td>
 
-                    <td class="text-right">
-                      <div class="actions">
-                        <a class="btn btn-sm bg-success-light" data-toggle="modal"
-                          (click)="editModal(edittemplate,special)">
-                          <i class="fe fe-pencil"></i> Edit
-                        </a>
-                        <a data-toggle="modal" (click)="deleteModal(delete,special)" class="btn btn-sm bg-danger-light">
-                          <i class="fe fe-trash"></i> Delete
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
+                  <td class="text-right">
+                    <div class="actions">
+                      <a class="btn btn-sm bg-success-light" data-toggle="modal"
+                         (click)="editModal(edittemplate,special)">
+                        <i class="fe fe-pencil"></i> Edit
+                      </a>
+                      <a data-toggle="modal" (click)="deleteModal(delete,special)" class="btn btn-sm bg-danger-light">
+                        <i class="fe fe-trash"></i> Delete
+                      </a>
+                    </div>
+                  </td>
+                </tr>
                 </tbody>
               </table>
             </div>
@@ -137,9 +137,11 @@
     Are you sure want to delete this speciality?
     <div style="margin-top:25px">
       <button type="button" class="btn btn-default" (mouseover)="btnColor()" id="btn-yes"
-        (click)="deleteSpeciality()">Yes</button>
+              (click)="deleteSpeciality()">Yes
+      </button>
       <button type="button" class="btn btn-primary" (mouseover)="btnColorNo()" id="btn-no"
-        (click)="decline()">No</button>
+              (click)="decline()">No
+      </button>
     </div>
   </div>
 </ng-template>

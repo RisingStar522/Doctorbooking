@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AppointmentsRoutingModule } from './appointments-routing.module';
-import { AppointmentsComponent } from './appointments.component';
+import {AppointmentsRoutingModule} from './appointments-routing.module';
+import {AppointmentsComponent} from './appointments.component';
 
-import { ModalModule } from 'ngx-bootstrap/modal';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [AppointmentsComponent],
@@ -14,4 +14,5 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot()
   ]
 })
-export class AppointmentsModule { }
+export class AppointmentsModule {
+}

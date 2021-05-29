@@ -13,8 +13,8 @@ import {
   Router,
   ActivatedRoute,
 } from '@angular/router';
-import { Location } from '@angular/common';
-import { CommonServiceService } from './common-service.service';
+import {Location} from '@angular/common';
+import {CommonServiceService} from './common-service.service';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   loadFooter = false;
   show: boolean = true;
   hideFooter: boolean = false;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,

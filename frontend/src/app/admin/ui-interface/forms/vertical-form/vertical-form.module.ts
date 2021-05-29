@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { VerticalFormRoutingModule } from './vertical-form-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {VerticalFormRoutingModule} from './vertical-form-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { VerticalFormRoutingModule } from './vertical-form-routing.module';
     VerticalFormRoutingModule
   ]
 })
-export class VerticalFormModule { }
+export class VerticalFormModule {
+}

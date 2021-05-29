@@ -1,5 +1,5 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
-import { CommonServiceService } from '../../common-service.service';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {CommonServiceService} from '../../common-service.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -14,7 +14,8 @@ export class DoctorsComponent implements OnInit {
   status;
 
 
-  constructor(public commonService: CommonServiceService) {}
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
     this.getDoctors();
@@ -24,17 +25,18 @@ export class DoctorsComponent implements OnInit {
     this.commonService.getDoctors().subscribe(
       (res) => {
         this.doctorsList = res;
-        $(function () {
+        $(function() {
           $('table').DataTable();
         });
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = <any> error)
     );
   }
 
-  changeStatus(id, status){
-    var datas={};
-    datas={"_id":id, "status":status};
-    this.commonService.doctorStatus(datas).subscribe((data: any[]) => {});
+  changeStatus(id, status) {
+    var datas = {};
+    datas = {'_id': id, 'status': status};
+    this.commonService.doctorStatus(datas).subscribe((data: any[]) => {
+    });
   }
 }

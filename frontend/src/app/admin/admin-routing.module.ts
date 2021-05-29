@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './admin.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {AdminComponent} from './admin.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {
         path: 'dashboard',
         loadChildren: () =>
@@ -18,7 +18,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             './pages/authendication/forgot-password/forgot-password.module'
-          ).then((m) => m.ForgotPasswordModule),
+            ).then((m) => m.ForgotPasswordModule),
       },
       {
         path: 'login-form',
@@ -95,14 +95,14 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             './ui-interface/forms/form-validation/form-validation.module'
-          ).then((m) => m.FormValidationModule),
+            ).then((m) => m.FormValidationModule),
       },
       {
         path: 'horizondal-form',
         loadChildren: () =>
           import(
             './ui-interface/forms/horizondal-form/horizondal-form.module'
-          ).then((m) => m.HorizondalFormModule),
+            ).then((m) => m.HorizondalFormModule),
       },
       {
         path: 'input-groups',
@@ -116,7 +116,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             './ui-interface/forms/vertical-form/vertical-form.module'
-          ).then((m) => m.VerticalFormModule),
+            ).then((m) => m.VerticalFormModule),
       },
       {
         path: 'form-mask',
@@ -137,7 +137,7 @@ const routes: Routes = [
         loadChildren: () =>
           import(
             './ui-interface/tables/admin-data-table/admin-data-table.module'
-          ).then((m) => m.AdminDataTableModule),
+            ).then((m) => m.AdminDataTableModule),
       },
       {
         path: 'appointment',
@@ -230,4 +230,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule {
+}

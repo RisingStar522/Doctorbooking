@@ -1,7 +1,7 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { PharmacyComponent } from './pharmacy.component';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {PharmacyComponent} from './pharmacy.component';
 
 const routes: Routes = [
   {
@@ -51,9 +51,11 @@ const routes: Routes = [
     ],
   },
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PharmacyRoutingModule { }
+export class PharmacyRoutingModule {
+}

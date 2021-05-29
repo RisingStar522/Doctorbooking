@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BasicTablesRoutingModule } from './basic-tables-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BasicTablesRoutingModule} from './basic-tables-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { BasicTablesRoutingModule } from './basic-tables-routing.module';
     BasicTablesRoutingModule
   ]
 })
-export class BasicTablesModule { }
+export class BasicTablesModule {
+}

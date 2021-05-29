@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
 declare var $: any;
 
 @Component({
@@ -7,12 +8,13 @@ declare var $: any;
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     // Pricing Options Show
 
-    $('#pricing_select input[name="rating_option"]').on('click', function () {
+    $('#pricing_select input[name="rating_option"]').on('click', function() {
       if ($(this).val() == 'price_free') {
         $('#custom_price_cont').hide();
       }
@@ -24,12 +26,12 @@ export class SettingsComponent implements OnInit {
 
     // Education Add More
 
-    $('.education-info').on('click', '.trash', function () {
+    $('.education-info').on('click', '.trash', function() {
       $(this).closest('.education-cont').remove();
       return false;
     });
 
-    $('.add-education').on('click', function () {
+    $('.add-education').on('click', function() {
       var educationcontent =
         '<div class="row form-row education-cont">' +
         '<div class="col-12 col-md-10 col-lg-11">' +
@@ -63,12 +65,12 @@ export class SettingsComponent implements OnInit {
 
     // Experience Add More
 
-    $('.experience-info').on('click', '.trash', function () {
+    $('.experience-info').on('click', '.trash', function() {
       $(this).closest('.experience-cont').remove();
       return false;
     });
 
-    $('.add-experience').on('click', function () {
+    $('.add-experience').on('click', function() {
       var experiencecontent =
         '<div class="row form-row experience-cont">' +
         '<div class="col-12 col-md-10 col-lg-11">' +
@@ -108,12 +110,12 @@ export class SettingsComponent implements OnInit {
 
     // Awards Add More
 
-    $('.awards-info').on('click', '.trash', function () {
+    $('.awards-info').on('click', '.trash', function() {
       $(this).closest('.awards-cont').remove();
       return false;
     });
 
-    $('.add-award').on('click', function () {
+    $('.add-award').on('click', function() {
       var regcontent =
         '<div class="row form-row awards-cont">' +
         '<div class="col-12 col-md-5">' +
@@ -140,12 +142,12 @@ export class SettingsComponent implements OnInit {
 
     // Membership Add More
 
-    $('.membership-info').on('click', '.trash', function () {
+    $('.membership-info').on('click', '.trash', function() {
       $(this).closest('.membership-cont').remove();
       return false;
     });
 
-    $('.add-membership').on('click', function () {
+    $('.add-membership').on('click', function() {
       var membershipcontent =
         '<div class="row form-row membership-cont">' +
         '<div class="col-12 col-md-10 col-lg-5">' +
@@ -166,12 +168,12 @@ export class SettingsComponent implements OnInit {
 
     // Registration Add More
 
-    $('.registrations-info').on('click', '.trash', function () {
+    $('.registrations-info').on('click', '.trash', function() {
       $(this).closest('.reg-cont').remove();
       return false;
     });
 
-    $('.add-reg').on('click', function () {
+    $('.add-reg').on('click', function() {
       var regcontent =
         '<div class="row form-row reg-cont">' +
         '<div class="col-12 col-md-5">' +
@@ -196,6 +198,7 @@ export class SettingsComponent implements OnInit {
       return false;
     });
   }
+
   files: File[] = [];
 
   onSelect(event) {

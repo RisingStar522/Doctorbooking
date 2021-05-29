@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { MypatientsRoutingModule } from './mypatients-routing.module';
-import { MypatientsComponent } from './mypatients.component';
+import {MypatientsRoutingModule} from './mypatients-routing.module';
+import {MypatientsComponent} from './mypatients.component';
 
 
 @NgModule({
@@ -12,4 +12,5 @@ import { MypatientsComponent } from './mypatients.component';
     MypatientsRoutingModule
   ]
 })
-export class MypatientsModule { }
+export class MypatientsModule {
+}

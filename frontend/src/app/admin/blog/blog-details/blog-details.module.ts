@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { BlogDetailsComponent } from './blog-details.component';
-import { BlogDetailsRoutingModule } from './blog-details-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {BlogDetailsComponent} from './blog-details.component';
+import {BlogDetailsRoutingModule} from './blog-details-routing.module';
 
 @NgModule({
-  declarations: [ BlogDetailsComponent ],
+  declarations: [BlogDetailsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -13,4 +13,5 @@ import { BlogDetailsRoutingModule } from './blog-details-routing.module';
   ]
 })
 
-export class BlogDetailsModule { }
+export class BlogDetailsModule {
+}

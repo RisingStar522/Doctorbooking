@@ -12,8 +12,8 @@ import {
   ActivatedRoute,
   Params,
 } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
-import { CommonServiceService } from '../common-service.service';
+import {DOCUMENT} from '@angular/common';
+import {CommonServiceService} from '../common-service.service';
 
 @Component({
   selector: 'app-pharmacy-admin',
@@ -23,6 +23,7 @@ import { CommonServiceService } from '../common-service.service';
 })
 export class PharmacyAdminComponent implements OnInit {
   adminShow: boolean = true;
+
   constructor(
     @Inject(DOCUMENT) private document,
     public commonService: CommonServiceService,
@@ -46,6 +47,7 @@ export class PharmacyAdminComponent implements OnInit {
       }
     });
   }
+
   ngOnInit(): void {
     this.commonService.nextmessage('pharmacy-admin');
     let scope = this;

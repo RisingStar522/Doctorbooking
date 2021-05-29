@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormMaskRoutingModule } from './form-mask-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormMaskRoutingModule} from './form-mask-routing.module';
 
 @NgModule({
   declarations: [],
@@ -9,4 +9,5 @@ import { FormMaskRoutingModule } from './form-mask-routing.module';
     FormMaskRoutingModule
   ]
 })
-export class FormMaskModule { }
+export class FormMaskModule {
+}

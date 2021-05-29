@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeSliderTwoComponent } from './home-slider-two.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeSliderTwoComponent} from './home-slider-two.component';
 
 const routes: Routes = [
   {
-    path : '',
-    component : HomeSliderTwoComponent
+    path: '',
+    component: HomeSliderTwoComponent
   }
 ];
 
@@ -13,4 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeSliderTwoRoutingModule { }
+export class HomeSliderTwoRoutingModule {
+}

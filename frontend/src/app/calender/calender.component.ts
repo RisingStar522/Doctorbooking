@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
 declare var FullCalendar: any;
 
 @Component({
@@ -8,7 +9,8 @@ declare var FullCalendar: any;
 })
 export class CalenderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     var calendarEl = document.getElementById('calendar');
@@ -73,7 +75,7 @@ export class CalenderComponent implements OnInit {
     });
 
     calendar.render();
-        
+
 
   }
 

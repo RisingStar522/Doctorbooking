@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { PharmacySearchComponent } from './pharmacy-search.component';
+import {PharmacySearchComponent} from './pharmacy-search.component';
 
 describe('PharmacySearchComponent', () => {
   let component: PharmacySearchComponent;
@@ -8,9 +8,9 @@ describe('PharmacySearchComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PharmacySearchComponent ]
+      declarations: [PharmacySearchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

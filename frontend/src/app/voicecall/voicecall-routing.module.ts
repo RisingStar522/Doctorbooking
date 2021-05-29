@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 
-import { VoicecallComponent } from './voicecall.component';
+import {VoicecallComponent} from './voicecall.component';
 
 const routes: Routes = [
-	{
-		path : '',
-		component : VoicecallComponent
-	}
+  {
+    path: '',
+    component: VoicecallComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class VoicecallRoutingModule { }
+export class VoicecallRoutingModule {
+}

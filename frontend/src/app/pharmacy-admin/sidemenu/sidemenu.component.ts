@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Router } from '@angular/router';
+import {Component, OnInit, Inject} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {Router} from '@angular/router';
 
-import { CommonServiceService } from '../../common-service.service';
+import {CommonServiceService} from '../../common-service.service';
+
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
@@ -18,12 +19,16 @@ export class SidemenuComponent implements OnInit {
     @Inject(DOCUMENT) private document,
     public router: Router,
     private commonService: CommonServiceService
-  ) {}
-  ngOnInit(): void {}
+  ) {
+  }
+
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit() {
     this.loadDynmicallyScript('assets/admin/js/script.js');
   }
+
   loadDynmicallyScript(js) {
     var script = document.createElement('script');
     script.src = js;
@@ -32,7 +37,9 @@ export class SidemenuComponent implements OnInit {
     script.onload = () => this.doSomethingWhenScriptIsLoaded();
   }
 
-  doSomethingWhenScriptIsLoaded() {}
+  doSomethingWhenScriptIsLoaded() {
+  }
+
   change(name) {
     this.page = name;
     this.commonService.nextmessage('admin');
@@ -41,15 +48,18 @@ export class SidemenuComponent implements OnInit {
   main() {
     this.commonService.nextmessage('main');
   }
+
   clickLogout() {
     window.location.href = '/home';
   }
+
   bell() {
     this.bellCollapsed = !this.bellCollapsed;
     if (!this.userCollapsed) {
       this.userCollapsed = true;
     }
   }
+
   user() {
     this.userCollapsed = !this.userCollapsed;
     if (!this.bellCollapsed) {

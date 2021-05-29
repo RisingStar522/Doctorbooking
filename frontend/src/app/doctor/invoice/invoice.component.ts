@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { CommonServiceService } from './../../common-service.service';
+import {CommonServiceService} from './../../common-service.service';
 
 @Component({
   selector: 'app-invoice',
@@ -9,18 +9,20 @@ import { CommonServiceService } from './../../common-service.service';
 })
 export class InvoiceComponent implements OnInit {
 
-  invoices : any = [];
-  constructor(public commonService:CommonServiceService) { }
+  invoices: any = [];
+
+  constructor(public commonService: CommonServiceService) {
+  }
 
   ngOnInit(): void {
-  	this.getTransactions();
+    this.getTransactions();
   }
 
   getTransactions() {
-  	this.commonService.getTransactions()
-  		.subscribe(res=>{
-  			this.invoices = res;
-  		})
+    this.commonService.getTransactions()
+      .subscribe(res => {
+        this.invoices = res;
+      });
   }
 
 }

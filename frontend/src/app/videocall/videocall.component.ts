@@ -1,9 +1,8 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 
-import { CommonServiceService } from './../common-service.service';
-
+import {CommonServiceService} from './../common-service.service';
 
 
 @Component({
@@ -11,21 +10,22 @@ import { CommonServiceService } from './../common-service.service';
   templateUrl: './videocall.component.html',
   styleUrls: ['./videocall.component.css']
 })
-export class VideocallComponent implements OnInit,OnDestroy {
+export class VideocallComponent implements OnInit, OnDestroy {
 
-  constructor(private location:Location,public commonSerivce:CommonServiceService) { }
+  constructor(private location: Location, public commonSerivce: CommonServiceService) {
+  }
 
   ngOnInit(): void {
-     this.commonSerivce.nextmessage('chat');
+    this.commonSerivce.nextmessage('chat');
   }
 
   ngOnDestroy() {
     this.commonSerivce.nextmessage('');
   }
 
-  
+
   back() {
-  	 this.location.back()
+    this.location.back();
   }
 
 }
