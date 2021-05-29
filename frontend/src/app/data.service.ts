@@ -729,7 +729,7 @@ export class DataService implements InMemoryDbService {
     let blogs = [
       {
         id: 1,
-        title: 'Doccure – Making your clinic painless visit?',
+        title: 'Doctae – Making your clinic painless visit?',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco sit laboris ullamco laborisut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         createdBy: 'Dr. Deborah Angel',
         createdAt: 'Wed May 27 2020 09:41:48 GMT+0530 (India Standard Time)',

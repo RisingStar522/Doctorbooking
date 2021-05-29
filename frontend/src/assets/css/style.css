@@ -1,6 +1,6 @@
 /*
 Author       : Dreamguys
-Template Name: Doccure - Bootstrap Template
+Template Name: Doctae - Bootstrap Template
 Version      : 1.3
 */
 
