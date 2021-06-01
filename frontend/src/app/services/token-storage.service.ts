@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const USER_ROLE = 'auth-role';
 
 const TOKEN_KEY_MEMBER = 'auth-token-member';
 const USER_KEY_MEMBER = 'auth-user-member';
@@ -58,6 +59,17 @@ export class TokenStorageService {
     }
   }
 
+  signOut_user(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // window.sessionStorage.clear();
+      window.sessionStorage.removeItem(TOKEN_KEY);
+      window.sessionStorage.removeItem(USER_KEY);
+      window.sessionStorage.removeItem(USER_ROLE);
+
+      this.LoggedInChange.next('false');
+      this.UserInfoChange.next(this.getUser());
+    }
+  }
   public saveToken(token: string): void {
     if (isPlatformBrowser(this.platformId)) {
       window.sessionStorage.removeItem(TOKEN_KEY);
@@ -80,6 +92,21 @@ export class TokenStorageService {
       window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
 
       this.UserInfoChange.next(this.getUser());
+    }
+  }
+
+  public saveRole(isPatient): void{
+    if (isPlatformBrowser(this.platformId)) {
+      window.sessionStorage.removeItem(USER_ROLE);
+      window.sessionStorage.setItem(USER_ROLE, isPatient);
+
+      this.UserInfoChange.next(this.getRole());
+    }
+  }
+
+  public getRole(): any {
+    if (isPlatformBrowser(this.platformId)) {
+      return JSON.parse(sessionStorage.getItem(USER_ROLE));
     }
   }
 

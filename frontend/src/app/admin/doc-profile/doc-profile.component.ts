@@ -1,8 +1,8 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import {CommonServiceService} from '../../common-service.service';
-import {TokenStorageService} from '../services/token-storage.service';
-import {AuthService} from '../services/auth.service';
+import {TokenStorageService} from '../../services/token-storage.service';
+import {AuthService} from '../../services/auth.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -84,14 +84,14 @@ export class DocProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.userEmail = this.tokenStorage.getUser();
+    if (this.tokenStorage.getToken_member()) {
+      this.userEmail = this.tokenStorage.getUser_member();
       this.getAdminInfo();
     }
   }
 
   getAdminInfo() {
-    this.commonService.getUserinfo(this.userEmail).subscribe(
+    this.commonService.getAdmininfo(this.userEmail).subscribe(
       (data: any[]) => {
         this.userinfo = data[0];
 
@@ -133,7 +133,7 @@ export class DocProfileComponent implements OnInit {
     if (this.password != this.confirmpass) {
       this.toastr.error('', 'New password does not match !');
     } else {
-      this.authService.updatePassword(this.userEmail, this.oldpassword, this.password).subscribe(
+      this.authService.updatePassword_member(this.userEmail, this.oldpassword, this.password).subscribe(
         data => {
           console.log('data = ', data);
           if (data.status != 'failed') {

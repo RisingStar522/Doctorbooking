@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-
+import {AuthService} from '../services/auth.service';
 import {CommonServiceService} from '../common-service.service';
 
 import {ToastrService} from 'ngx-toastr';
@@ -19,17 +19,19 @@ export class RegisterComponent implements OnInit {
   patients: any = [];
   reg_type = 'Patient Register';
   doc_patient = 'Are you a Doctor?';
+  isRegister: boolean = false;
+  isSignUpFailed: boolean = false;
+  isSuccessful: boolean = false;
 
   constructor(
     private toastr: ToastrService,
     public commonService: CommonServiceService,
-    public router: Router
+    public router: Router,
+    private authService: AuthService,
   ) {
   }
 
   ngOnInit(): void {
-    this.getpatients();
-    this.getDoctors();
   }
 
   changeRegType() {
@@ -46,28 +48,44 @@ export class RegisterComponent implements OnInit {
 
   signup() {
     if (this.name === '' || this.mobile === '' || this.password === '') {
-      this.toastr.error('', 'Please enter mandatory field!');
+      this.toastr.error('', 'Please enter required fields!');
     } else {
       if (!this.isPatient) {
-        let params = {
-          id: this.doctors.length + 1,
-          doctor_name: this.name,
-          password: this.password,
-        };
-        this.commonService.createDoctor(params).subscribe((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/login']);
-        });
+        this.authService.register_doctor(this.name, this.mobile, this.password).subscribe(
+          data => {            
+            if(data.status != "failed"){
+              this.isSuccessful = true;
+              this.isSignUpFailed = false;
+              this.toastr.success('', 'Register successfully!');
+              this.router.navigate(['/login-page']);
+            }else{
+              this.toastr.error('', data.msg);
+            }
+          },
+          err => {
+            this.toastr.error('', 'Register faid!');
+            this.isSuccessful = false;
+            this.isSignUpFailed = true;
+          }
+        );
       } else {
-        let params = {
-          id: this.patients.length + 1,
-          name: this.name,
-          password: this.password,
-        };
-        this.commonService.createPatient(params).subscribe((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/login']);
-        });
+        this.authService.register_patient(this.name, this.mobile, this.password).subscribe(
+          data => {
+            if(data.status != "failed"){
+              this.isSuccessful = true;
+              this.isSignUpFailed = false;
+              this.toastr.success('', 'Register successfully!');
+              this.router.navigate(['/login-page']);
+            }else{
+              this.toastr.error('', data.msg);
+            }
+          },
+          err => {
+            this.toastr.error('', 'Register faid!');
+            this.isSuccessful = false;
+            this.isSignUpFailed = true;
+          }
+        );
       }
     }
   }
@@ -83,4 +101,6 @@ export class RegisterComponent implements OnInit {
       this.patients = res;
     });
   }
+
+
 }

@@ -1,47 +1,43 @@
 <!-- Main Wrapper -->
 <div class="main-wrapper login-body">
-  <div class="login-wrapper">
-    <div class="container">
-      <div class="loginbox">
-        <div class="login-left">
-          <img class="img-fluid" src="assets/admin/img/logo-white.png" alt="Logo">
-        </div>
-        <div class="login-right">
-          <div class="login-right-wrap">
-            <h1>Login</h1>
-            <p class="account-subtitle">Access to admin dashboard</p>
-            <!-- Form -->
-            <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input type="email" class="form-control" name="username" [(ngModel)]="form.username" required ngModel
-                       email=true #username="ngModel"/>
-                <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
-                  Email is required!
+    <div class="login-wrapper">
+        <div class="container">
+            <div class="loginbox">
+                <div class="login-left">
+                    <img class="img-fluid" src="assets/admin/img/logo-white.png" alt="Logo">
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
-                       minlength="6" #password="ngModel"/>
-                <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-                  <div *ngIf="password.errors.required">Password is required</div>
-                  <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                <div class="login-right">
+                    <div class="login-right-wrap">
+                        <h1>Login</h1>
+                        <p class="account-subtitle">Access to admin dashboard</p>
+                        <!-- Form -->
+                        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input type="email" class="form-control" name="username" [(ngModel)]="form.username" required ngModel email=true #username="ngModel" />
+                                <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                                    Email is required!
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+                                <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                                    <div *ngIf="password.errors.required">Password is required</div>
+                                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block">Login</button>
+                            </div>
+                            <!-- <div class="text-center dont-have">Don’t have an account? <a [routerLink]="'../Register'">Register</a></div> -->
+                        </form>
+                        <!-- /Form -->
+                        <div class="text-center forgotpass"><a [routerLink]="'forgot-password'">Forgot Password?</a></div>
+                    </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block">
-                  Login
-                </button>
-              </div>
-              <!-- <div class="text-center dont-have">Don’t have an account? <a [routerLink]="'../Register'">Register</a></div> -->
-            </form>
-            <!-- /Form -->
-            <div class="text-center forgotpass"><a [routerLink]="'forgot-password'">Forgot Password?</a></div>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- /Main Wrapper -->

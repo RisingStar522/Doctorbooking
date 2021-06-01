@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-
+import {AuthService} from '../services/auth.service';
+import {TokenStorageService} from '../services/token-storage.service';
 import {CommonServiceService} from '../common-service.service';
 
 import {ToastrService} from 'ngx-toastr';
@@ -17,9 +18,15 @@ export class LoginComponent implements OnInit {
   username = '';
   password = '';
 
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+
   constructor(
     public router: Router,
-    public commonService: CommonServiceService,
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
     private toastr: ToastrService
   ) {
     this.username = '';
@@ -29,8 +36,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getpatients();
-    this.getDoctors();
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
   checkType(event) {
@@ -38,44 +47,60 @@ export class LoginComponent implements OnInit {
   }
 
   login(name, password) {
-    localStorage.setItem('auth', 'true');
-    localStorage.setItem('patient', this.isPatient.toString());
-    if (this.isPatient) {
-      let filter = this.patients.filter(
-        (a) => a.name == this.username && a.password === this.password
-      );
-      if (filter.length != 0) {
-        localStorage.setItem('id', filter[0]['id']);
-        this.toastr.success('', 'Login success!');
-        this.commonService.nextmessage('patientLogin');
-        this.router.navigate(['/patients/dashboard']);
-      } else {
-        this.toastr.error('', 'Login failed!');
-      }
+    if (name === '' || password === '') {
+      this.toastr.error('', 'Please enter required fields!');
     } else {
-      let filter = this.doctors.filter(
-        (a) => a.doctor_name === this.username && a.password === this.password
-      );
-      if (filter.length != 0) {
-        this.toastr.success('', 'Login success!');
-        this.commonService.nextmessage('doctorLogin');
-        localStorage.setItem('id', filter[0]['id']);
-        this.router.navigate(['/doctor/dashboard']);
-      } else {
-        this.toastr.error('', 'Login failed!');
+      if (!this.isPatient) {
+        this.authService.login_doctor(name, password).subscribe(
+          data => {
+            console.log('data = ', data);
+            if (data.status != 'failed') {
+              this.tokenStorage.saveToken(data.accessToken);
+              this.tokenStorage.saveUser(data.data['email']);
+              this.tokenStorage.saveRole(this.isPatient);
+              this.isLoginFailed = false;
+              this.isLoggedIn = true;
+              this.roles = this.tokenStorage.getUser().roles;
+              this.toastr.success('', 'Welcome !');              
+              this.router.navigate(['/doctor/dashboard']);
+            } else {
+              this.toastr.error('', data.msg);
+              this.isLoginFailed = true;
+            }
+          },
+          err => {
+            this.toastr.error('', 'Login failed!');
+            this.isLoginFailed = true;
+          }
+        );
+      }else{
+        this.authService.login_patient(name, password).subscribe(
+          data => {
+            console.log('data = ', data);
+            if (data.status != 'failed') {
+              this.tokenStorage.saveToken(data.accessToken);
+              this.tokenStorage.saveUser(data.data['email']);
+              this.tokenStorage.saveRole(this.isPatient);
+              this.isLoginFailed = false;
+              this.isLoggedIn = true;
+              this.roles = this.tokenStorage.getUser().roles;
+              this.toastr.success('', 'Welcome !');
+              this.router.navigate(['/patients/dashboard']);
+            } else {
+              this.toastr.error('', data.msg);
+              this.isLoginFailed = true;
+            }
+          },
+          err => {
+            this.toastr.error('', 'Login failed!');
+            this.isLoginFailed = true;
+          }
+        );
       }
     }
   }
 
-  getDoctors() {
-    this.commonService.getDoctors().subscribe((res) => {
-      this.doctors = res;
-    });
-  }
-
-  getpatients() {
-    this.commonService.getpatients().subscribe((res) => {
-      this.patients = res;
-    });
+  reloadPage(): void {
+    window.location.reload();
   }
 }

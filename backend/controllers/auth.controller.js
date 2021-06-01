@@ -1,105 +1,173 @@
 const config = require("../config/auth.config");
-
 const db = require("../models");
 const User = db.user;
+const doctorSchema = db.doctor;
+const patientSchema = db.patients;
 const administratorsSchema = db.administratorsSchema;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
-    const user = new User({
-        firstname: req.body.sign_firstName,
-        lastname: req.body.sign_lastname,
-        email: req.body.sign_email,
-        password: bcrypt.hashSync(req.body.sign_password, 8),
-        role: req.body.role,
-        paid: 0,
-        earn: 0,
-        review: "0",
-        status: "0",
-        phone: req.body.sign_phone,
-        create_at: Date(),
-        updateed_at: Date()
-    });
-    user.save((err, user) => {
-        if (err) {
-            res.send({
-                status: "failed",
-                data: {},
-                msg: `Something went wrong ${err}`,
+
+
+    console.log(req.body)
+    if (req.body.isPatient) {
+        const patient = new patientSchema({
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 8),
+            Phone: req.body.phone,
+            create_at: Date(),
+            updateed_at: Date()
+        });
+        patient.save((err, result) => {
+            if (err) {
+                res.send({
+                    status: "failed",
+                    data: {},
+                    msg: `Something went wrong ${err}`,
+                });
+                return;
+            }
+
+            var token = jwt.sign({ id: result.id }, config.secret, {
+                expiresIn: 86400 // 24 hours
             });
-            return;
-        }
 
-        var token = jwt.sign({ id: user.id }, config.secret, {
-            expiresIn: 86400 // 24 hours
+            res.status(200).send({
+                status: "success",
+                token_user: token,
+                msg: ""
+            });
         });
-
-        var authorities = "ROLE_" + user.role;
-
-        res.status(200).send({
-            status: "success",
-            data: {
-                id: user._id,
-                username: user.username,
-                email: user.email,
-                role: authorities,
-                phone: user.phone,
-                earn: user.earn,
-                paid: user.paid,
-                balance: 0,
-                accessToken: token
-            },
-            msg: ""
+    } else {
+        const doctor = new doctorSchema({
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 8),
+            Phone: req.body.phone,
+            create_at: Date(),
+            updateed_at: Date()
         });
-    });
+        doctor.save((err, result) => {
+            if (err) {
+                res.send({
+                    status: "failed",
+                    data: {},
+                    msg: `Something went wrong ${err}`,
+                });
+                return;
+            }
+
+            var token = jwt.sign({ id: result.id }, config.secret, {
+                expiresIn: 86400 // 24 hours
+            });
+
+            res.status(200).send({
+                status: "success",
+                token_user: token,
+                msg: ""
+            });
+        });
+    }
 };
 
 exports.signin = (req, res) => {
-    User.findOne({
+
+    doctorSchema.findOne({
             email: req.body.username
         })
-        .populate("roles", "-__v")
-        .exec((err, user) => {
+        .exec((err, doctor) => {
             if (err) {
                 res.status(500).send(err);
                 return;
             }
 
-            if (!user) {
+            if (!doctor) {
                 return res.status(200).send({ status: "failed", data: {}, msg: "Email does not exist" });
             }
 
             var passwordIsValid = bcrypt.compareSync(
                 req.body.password,
-                user.password
+                doctor.password
             );
 
             if (!passwordIsValid) {
                 return res.status(200).send({ status: "failed", data: {}, msg: "Password invalid" });
             }
 
-            var token = jwt.sign({ id: user.id }, config.secret, {
+            var token = jwt.sign({ id: doctor._id }, config.secret, {
                 expiresIn: 86400 // 24 hours
             });
 
-            var authorities = "ROLE_" + user.role;
+            var authorities = "ROLE_" + doctor.role;
 
             res.status(200).send({
                 status: "success",
+                accessToken: token,
                 data: {
-                    id: user._id,
-                    firstname: user.firstname,
-                    lastname: user.lastname,
-                    email: user.email,
-                    status: user.status,
-                    mobile: user.mobile,
-                    phone: user.phone,
-                    role: user.role,
+                    id: doctor._id,
+                    doctor_name: doctor.doctor_name,
+                    email: doctor.email,
+                    speciality: doctor.speciality,
+                    speciality_photo: doctor.speciality_profile,
+                    Earned: doctor.Earned,
+                    Education: doctor.Education,
+                    avatar: doctor.profile,
+                    comment: doctor.comment,
+                    type: doctor.type,
+                    location: doctor.location,
                     accessToken: token
                 },
-                msg: "Successfully logined"
+                msg: ""
+            });
+        });
+};
+
+exports.signin_patient = (req, res) => {
+
+    patientSchema.findOne({
+            email: req.body.username
+        })
+        .exec((err, patient) => {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+
+            if (!patient) {
+                return res.status(200).send({ status: "failed", data: {}, msg: "Email does not exist" });
+            }
+
+            var passwordIsValid = bcrypt.compareSync(
+                req.body.password,
+                patient.password
+            );
+
+            if (!passwordIsValid) {
+                return res.status(200).send({ status: "failed", data: {}, msg: "Password invalid" });
+            }
+
+            var token = jwt.sign({ id: patient._id }, config.secret, {
+                expiresIn: 86400 // 24 hours
+            });
+
+            var authorities = "ROLE_" + patient.role;
+
+            res.status(200).send({
+                status: "success",
+                accessToken: token,
+                data: {
+                    id: patient._id,
+                    name: patient.name,
+                    email: patient.email,
+                    avatar: patient.img,
+                    bloodgroup: patient.bloodgroup,
+                    type: patient.type,
+                    phone: patient.phone,
+                    address: patient.address,
+                    accessToken: token
+                },
+                msg: ""
             });
         });
 };
@@ -163,7 +231,7 @@ exports.signin_admin = (req, res) => {
             }
 
             if (!admin) {
-                return res.status(200).send({ status: "failed", data: {}, msg: "Email is not exist." });
+                return res.status(200).send({ status: "failed", data: {}, msg: "Email does not exist." });
             }
 
             var passwordIsValid = bcrypt.compareSync(
@@ -183,7 +251,7 @@ exports.signin_admin = (req, res) => {
 
             res.status(200).send({
                 status: "success",
-                accessToken:token,
+                accessToken: token,
                 data: {
                     id: admin._id,
                     firstname: admin.first_name,

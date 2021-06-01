@@ -2,8 +2,8 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Router} from '@angular/router';
 
-import {AuthService} from '../services/auth.service';
-import {TokenStorageService} from '../services/token-storage.service';
+import {AuthService} from '../../services/auth.service';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 import {CommonServiceService} from '../../common-service.service';
 
@@ -33,14 +33,14 @@ export class SidemenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.userEmail = this.tokenStorage.getUser();
+    if (this.tokenStorage.getToken_member()) {
+      this.userEmail = this.tokenStorage.getUser_member();
       this.getAdminInfo();
     }
   }
 
   getAdminInfo() {
-    this.commonService.getUserinfo(this.userEmail).subscribe(
+    this.commonService.getAdmininfo(this.userEmail).subscribe(
       (data: any[]) => {
         this.userinfo = data[0];
         if (this.userinfo['avatar'] != null && this.userinfo['avatar'] != '') {
@@ -79,7 +79,7 @@ export class SidemenuComponent implements OnInit {
 
   clickLogout() {
     // window.location.href = '/admin/login-form';
-    this.tokenStorage.signOut();
+    this.tokenStorage.signOut_member();
   }
 
   bell() {

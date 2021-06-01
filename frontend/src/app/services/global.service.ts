@@ -4,7 +4,7 @@ import {distinctUntilChanged, map, catchError} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {ConstantService} from './constant.service';
 import {CommonHttpService} from './common-http.service';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

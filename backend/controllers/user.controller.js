@@ -74,7 +74,7 @@ exports.getUserListP = async(req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.status(200).send( result);
+            res.status(200).send(result);
         }
     })
 }
@@ -108,6 +108,33 @@ exports.getUserinfo = async(req, res) => {
         }
     })
 }
+
+exports.getDoctor = async(req, res) => {
+    var query = {};
+    query['email'] = req.body.email;
+
+    doctorSchema.find(query).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })
+}
+
+exports.getPatient = async(req, res) => {
+    var query = {};
+    query['email'] = req.body.email;
+
+    patientSchema.find(query).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })
+}
+
 
 exports.getAdminListAll = async(req, res) => {
     var query = {};
@@ -416,7 +443,7 @@ exports.saveMember = (req, res) => {
 };
 
 exports.updateAdminDetails = (req, res) => {
-   
+
     administratorsSchema.updateOne({ _id: req.body.itemid }, { $set: req.body.param },
         function(err, result) {
             if (err) {
@@ -633,10 +660,10 @@ exports.editUserAvatar = (req, res) => {
 exports.editAdminAvatar = (req, res) => {
 
     filepath = req.file.path;
-    
+
     avatar = filepath.replace('..\\frontend\\src\\assets', 'assets');
     const admin = new administratorsSchema({
-      avatar: avatar,
+        avatar: avatar,
     });
     administratorsSchema.updateOne({ email: req.body.email }, { avatar: avatar },
         function(err, result) {
@@ -652,7 +679,7 @@ exports.editAdminAvatar = (req, res) => {
         }
     );
 
-   
+
 }
 
 exports.editUserProfile = (req, res) => {
@@ -744,13 +771,14 @@ exports.editUserProfile = (req, res) => {
 
 
 exports.doctors = async(req, res) => {
+    console.log("doctor list called");
     doctorSchema.find({}).exec(function(err, result) {
         if (err) {
             res.send(err);
         } else {
             res.status(200).send(result);
         }
-    })   
+    })
 }
 
 exports.patients = async(req, res) => {
@@ -760,18 +788,17 @@ exports.patients = async(req, res) => {
         } else {
             res.status(200).send(result);
         }
-    })   
+    })
 }
-exports.changeDoctorStatus= async(req, res) => {
-    if(req.body.status == "1"){
+exports.changeDoctorStatus = async(req, res) => {
+    if (req.body.status == "1") {
         currentlyStatus = "0";
-    }else{
+    } else {
         currentlyStatus = "1";
     }
-    
+
     doctorSchema.updateOne({ _id: req.body._id }, { status: currentlyStatus },
-        function(er, result) {
-        }
+        function(er, result) {}
     );
 
     res.status(200).send({ status: 'success' });

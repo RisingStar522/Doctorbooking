@@ -31,7 +31,7 @@ export class CheckoutComponent implements OnInit {
     this.doctorId = this.route.snapshot.queryParams['id'];
     this.getDoctorsDetails();
     this.allPatients();
-    this.getAppointments();
+    this.getAppointments_byPatient();
   }
 
   getDoctorsDetails() {
@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  getAppointments() {
+  getAppointments_byPatient() {
     this.commonService.getAppointments().subscribe((res) => {
       this.appointments = res;
     });
@@ -87,7 +87,7 @@ export class CheckoutComponent implements OnInit {
       };
       this.commonService.createPatient(patients).subscribe((patients) => {
         this.allPatients();
-        this.getAppointments();
+        this.getAppointments_byPatient();
         this.toastr.success('', 'Appointment booked successfully!');
         this.router.navigate(['/patients/success']);
       });

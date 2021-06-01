@@ -34,6 +34,10 @@ module.exports = function(app, upload) {
 
     app.post("/api/user/getUserinfo", userController.getUserinfo);
 
+    app.post("/api/user/getDoctor", userController.getDoctor);
+
+    app.post("/api/user/getPatient", userController.getPatient);
+
     app.post("/api/user/changeUserStatus", userController.changeUserStatus);
 
     app.post("/api/user/changeType", userController.changeType);
@@ -56,7 +60,7 @@ module.exports = function(app, upload) {
     app.post("/api/user/changePwd", userController.changePwd);
 
     app.get("/api/user/doctors", userController.doctors);
-    
+
     app.get("/api/user/patients", userController.patients);
 
     app.post("/api/user/doctorStatus", userController.changeDoctorStatus);

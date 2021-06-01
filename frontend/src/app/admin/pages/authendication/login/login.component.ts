@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../services/auth.service';
-import {TokenStorageService} from '../../../services/token-storage.service';
+import {AuthService} from '../../../../services/auth.service';
+import {TokenStorageService} from '../../../../services/token-storage.service';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -25,24 +25,24 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorage.getToken_member()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.roles = this.tokenStorage.getUser_member().roles;
     }
   }
 
   login(): void {
     const {username, password} = this.form;
 
-    this.authService.login(username, password).subscribe(
+    this.authService.login_member(username, password).subscribe(
       data => {
         console.log('data = ', data);
         if (data.status != 'failed') {
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data.data['email']);
+          this.tokenStorage.saveToken_member(data.accessToken);
+          this.tokenStorage.saveUser_member(data.data['email']);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
+          this.roles = this.tokenStorage.getUser_member().roles;
           this.reloadPage();
         } else {
           this.toastr.error('', data.msg);

@@ -67,9 +67,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
     });
     this.url = location.path();
     this.show = this.url.includes('admin') ? false : true;
-    this.show = this.url.includes('pharmacy-admin') ? false : true;
+    // this.show = this.url.includes('pharmacy-admin') ? false : true;
     this.commonServic.message.subscribe((res) => {
-      if (res === 'admin' || res === 'pharmacy-admin') {
+      // if (res === 'admin' || res === 'pharmacy-admin') {
+      if (res === 'admin') {
         this.show = false;
         this.hideFooter = true;
       } else if (res === 'main') {

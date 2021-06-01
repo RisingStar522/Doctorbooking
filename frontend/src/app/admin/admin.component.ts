@@ -14,7 +14,7 @@ import {
 } from '@angular/router';
 import {DOCUMENT} from '@angular/common';
 import {CommonServiceService} from '../common-service.service';
-import {TokenStorageService} from './services/token-storage.service';
+import {TokenStorageService} from '../services/token-storage.service';
 
 @Component({
   selector: 'app-admin',
@@ -55,9 +55,9 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.commonService.nextmessage('admin');
     let scope = this;
-    if (this.tokenStorageService.getToken()) {
+    if (this.tokenStorageService.getToken_member()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getUser().roles;
+      this.roles = this.tokenStorageService.getUser_member().roles;
       setTimeout(() => {
         scope.Router.navigateByUrl('/admin/dashboard');
       }, 100);

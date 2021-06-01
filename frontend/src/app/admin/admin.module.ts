@@ -8,7 +8,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {DataService} from './../data.service';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {authInterceptorProviders} from './_helpers/auth.interceptor';
+import {authInterceptorProviders} from '../_helpers/auth.interceptor_member';
 
 @NgModule({
   declarations: [AdminComponent, SidemenuComponent],

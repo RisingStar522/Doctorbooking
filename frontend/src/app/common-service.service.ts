@@ -19,39 +19,7 @@ export class CommonServiceService {
       phone: '+1 923 782 4575',
       amount: 150,
       status: 0,
-    },
-    {
-      patientName: 'Richard Wilson',
-      patient_id: 'P0001',
-      email: 'richard@example.com',
-      apptDate: 'Sat May 23 2020 13:35:47 GMT+0530 (India Standard Time)',
-      purpose: 'General',
-      type: 'Old patient',
-      phone: '+1 828 632 9170',
-      amount: 200,
-      status: 0,
-    },
-    {
-      patientName: 'Richard Wilson',
-      patient_id: 'P0002',
-      email: 'richard@example.com',
-      apptDate: 'Sat May 23 2020 13:35:47 GMT+0530 (India Standard Time)',
-      purpose: 'General',
-      type: 'New patient',
-      phone: '+1 828 632 9170',
-      amount: 350,
-      status: 0,
-    },
-    {
-      patientName: 'Richard Wilson',
-      email: 'richard@example.com',
-      patient_id: 'P0003',
-      apptDate: 'Sat May 23 2020 13:35:47 GMT+0530 (India Standard Time)',
-      purpose: 'General',
-      type: 'New patient',
-      amount: 400,
-      status: 0,
-    },
+    }
   ];
 
   messages: '';
@@ -82,10 +50,22 @@ export class CommonServiceService {
     return this.http.post(`${this.SERVER_URL + 'user/doctorStatus'}`, data);
   }
 
-  getUserinfo(user) {
+  getAdmininfo(user) {
     var userinfo = {};
     userinfo = {'email': user};
     return this.http.post(`${this.SERVER_URL + 'user/getAdmin'}`, userinfo);
+  }
+
+  getDoctorinfo(user) {
+    var userinfo = {};
+    userinfo = {'email': user};
+    return this.http.post(`${this.SERVER_URL + 'user/getDoctor'}`, userinfo);
+  }
+
+  getPatientinfo(user) {
+    var userinfo = {};
+    userinfo = {'email': user};
+    return this.http.post(`${this.SERVER_URL + 'user/getPatient'}`, userinfo);
   }
 
   adminAvatarChange(data) {
@@ -127,6 +107,12 @@ export class CommonServiceService {
     return this.http.get(this.SERVER_URL + 'appointments');
   }
 
+  getAppointments_byPatient(id) {
+    var data = {};
+    data = {'_id': id};
+    return this.http.post(`${this.SERVER_URL + 'appointments'}`, data)
+  }
+
   updateAppointment(data, id) {
     return this.http.put(`${this.SERVER_URL + 'appointments'}/${id}`, data);
   }
@@ -156,7 +142,7 @@ export class CommonServiceService {
   }
 
   createDoctor(data) {
-    return this.http.post(`${this.SERVER_URL + 'doctors'}`, data);
+    return this.http.post(`${this.SERVER_URL + 'auth/signup'}`, data);
   }
 
   createPatient(data) {

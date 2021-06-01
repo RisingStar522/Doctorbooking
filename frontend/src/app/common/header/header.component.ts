@@ -13,7 +13,7 @@ import {
   NavigationEnd,
 } from '@angular/router';
 import {DOCUMENT} from '@angular/common';
-
+import {TokenStorageService} from '../../services/token-storage.service';
 import {CommonServiceService} from './../../common-service.service';
 
 @Component({
@@ -27,15 +27,21 @@ export class HeaderComponent implements OnInit {
   page;
   splitVal;
   headerTop: boolean = false;
+  userData =[];
   base;
   url1;
+  roles;
+  userEmail;
+  userRules;
+  imageSrc;
 
   constructor(
     @Inject(DOCUMENT) private document,
     private cdr: ChangeDetectorRef,
     public router: Router,
     private activeRoute: ActivatedRoute,
-    public commonService: CommonServiceService
+    public commonService: CommonServiceService,
+    private tokenStorageService: TokenStorageService, 
   ) {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
@@ -50,28 +56,25 @@ export class HeaderComponent implements OnInit {
       }
     });
     this.url1 = this.router.url;
-    this.commonService.message.subscribe((res) => {
-      if (res === 'patientLogin') {
-        this.auth = true;
-        // this.isPatient = true;
-      }
-      if (res === 'doctorLogin') {
-        this.auth = true;
-        // this.isPatient = false;
-      }
-      if (res === 'logout') {
-        this.auth = false;
-        this.isPatient = false;
-      }
-    });
+    if(this.tokenStorageService.getToken()){
+      this.auth = true;
+    }else{
+      this.auth = false;
+      this.isPatient = false;
+    }
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('auth') === 'true') {
+    if (this.tokenStorageService.getToken()) {
       this.auth = true;
-      this.isPatient =
-        localStorage.getItem('patient') === 'true' ? true : false;
-    }
+      this.isPatient = this.tokenStorageService.getRole();
+      this.userEmail = this.tokenStorageService.getUser();
+      if(this.isPatient){
+        this.getPatient();
+      }else{
+        this.getDoctor()
+      }
+    } 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         $('html').removeClass('menu-opened');
@@ -79,11 +82,41 @@ export class HeaderComponent implements OnInit {
         $('.main-wrapper').removeClass('slide-nav');
       }
     });
+
   }
 
   ngAfterViewInit() {
     this.cdr.detectChanges();
+
     this.loadDynmicallyScript('assets/js/script.js');
+
+  }
+
+  getDoctor(){
+    this.commonService.getDoctorinfo(this.userEmail).subscribe(
+      (data: any[]) => {
+        console.log(data[0])
+        this.userData = data[0];
+        if (this.userData['profile'] != null && this.userData['profile'] != '') {
+          this.imageSrc = this.userData['profile'];
+        } else {
+          this.imageSrc = 'assets/img/doctors/doctor-thumb-01.jpg';
+        }
+      },
+    );
+  }
+
+  getPatient(){
+    this.commonService.getPatientinfo(this.userEmail).subscribe(
+      (data: any[]) => {
+        this.userData = data[0];
+        if (this.userData['img'] != null && this.userData['img'] != '') {
+          this.imageSrc = this.userData['img'];
+        } else {
+          this.imageSrc = 'assets/img/doctors/doctor-thumb-01.jpg';
+        }
+      },
+    );
   }
 
   loadDynmicallyScript(js) {
@@ -132,20 +165,6 @@ export class HeaderComponent implements OnInit {
         document.getElementById('patient').style.display = 'block';
       }
     }
-    if (val === 'pharmacy') {
-      if (document.getElementById('pharmacy').style.display == 'block') {
-        document.getElementById('pharmacy').style.display = 'none';
-      } else {
-        document.getElementById('pharmacy').style.display = 'block';
-      }
-    }
-    if (val === 'pages') {
-      if (document.getElementById('pages').style.display == 'block') {
-        document.getElementById('pages').style.display = 'none';
-      } else {
-        document.getElementById('pages').style.display = 'block';
-      }
-    }
     if (val === 'blog') {
       if (document.getElementById('blog').style.display == 'block') {
         document.getElementById('blog').style.display = 'none';
@@ -168,10 +187,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
-    this.auth = false;
-    this.isPatient = false;
-    this.router.navigate(['/login']);
+    
+    this.tokenStorageService.signOut_user();
+    this.router.navigate(['/login-page']);
+
+    
   }
 
   home() {
