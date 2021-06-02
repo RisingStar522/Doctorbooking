@@ -8,30 +8,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'home-one',
-    loadChildren: () =>
-      import('./home-one/home-one.module').then((m) => m.HomeOneModule),
-  },
-  {
-    path: 'home-two',
-    loadChildren: () =>
-      import('./home-two/home-two.module').then((m) => m.HomeTwoModule),
-  },
-  {
-    path: 'home-slider-one',
-    loadChildren: () =>
-      import('./home-slider-one/home-slider-one.module').then(
-        (m) => m.HomeSliderOneModule
-      ),
-  },
-  {
-    path: 'home-slider-two',
-    loadChildren: () =>
-      import('./home-slider-two/home-slider-two.module').then(
-        (m) => m.HomeSliderTwoModule
-      ),
-  },
-  {
     path: 'doctor',
     loadChildren: () =>
       import('./doctor/doctor.module').then((m) => m.DoctorModule),

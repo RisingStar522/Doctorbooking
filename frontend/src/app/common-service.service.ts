@@ -110,7 +110,17 @@ export class CommonServiceService {
   getAppointments_byPatient(id) {
     var data = {};
     data = {'_id': id};
-    return this.http.post(`${this.SERVER_URL + 'appointments'}`, data)
+    return this.http.post(`${this.SERVER_URL + 'getAppointment'}`, data)
+  }
+  getPrescriptions_byPatient(id) {
+    var data = {};
+    data = {'_id': id};
+    return this.http.post(`${this.SERVER_URL + 'getPrescription'}`, data)
+  }
+  getBillings_byPatient(id) {
+    var data = {};
+    data = {'_id': id};
+    return this.http.post(`${this.SERVER_URL + 'getBills'}`, data)
   }
 
   updateAppointment(data, id) {
