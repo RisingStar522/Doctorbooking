@@ -67,7 +67,7 @@ export class AuthService {
   }  
 
   updatePassword(username: string, oldpassword: string, newpassword: string): Observable<any> {
-    return this.http.post(AUTH_API + 'user/changePwd', {
+    return this.http.post(AUTH_API + 'user/changePwd_patient', {
       username,
       oldpassword,
       newpassword

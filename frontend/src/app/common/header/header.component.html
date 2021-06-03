@@ -107,7 +107,7 @@
                         </div>
                         <div class="user-text">
                             <h6 *ngIf="!isPatient">{{userData["doctor_name"]}}</h6>
-                            <h6 *ngIf="isPatient">{{userData["name"]}}</h6>
+                            <h6 *ngIf="isPatient">{{userData["firstname"]}} {{userData["lastname"]}}</h6>
                             <p class="text-muted mb-0" *ngIf="!isPatient">Doctor</p>
                             <p class="text-muted mb-0" *ngIf="isPatient">Patient</p>
                         </div>

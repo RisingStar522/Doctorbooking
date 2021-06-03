@@ -24,6 +24,8 @@ module.exports = function(app, upload) {
 
     app.post("/api/user/editUserProfile", upload.single("uploadfile"), userController.editUserProfile);
 
+    app.post("/api/user/editPatientProfile", upload.single("uploadfile"), userController.editPatientProfile);
+
     app.post("/api/user/getAdminListAll", userController.getAdminListAll);
 
     app.post("/api/user/getUserListAll", userController.getUserListAll);
@@ -58,6 +60,8 @@ module.exports = function(app, upload) {
     app.post("/api/user/deleteadmin", userController.deleteadmin);
 
     app.post("/api/user/changePwd", userController.changePwd);
+
+    app.post("/api/user/changePwd_patient", userController.changePwd_patient);
 
     app.get("/api/user/doctors", userController.doctors);
 

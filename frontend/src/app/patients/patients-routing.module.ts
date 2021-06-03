@@ -86,6 +86,11 @@ const routes: Routes = [
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
       {
+        path: 'change',
+        loadChildren: () =>
+          import('./change-password/change-password.module').then((m) => m.ChangePasswordModule),
+      },
+      {
         path: 'search-doctor',
         loadChildren: () =>
           import('./search-doctor/search-doctor.module').then(

@@ -10,6 +10,7 @@ db.doctor = require("./doctor.model");
 db.patients = require("./patients.model");
 db.appointments = require("./appointments.model");
 db.prescriptions = require("./prescriptions.model");
+db.favourites = require("./favourites.model");
 db.bills = require("./bills.model");
 db.speicalties = require("./specialties.model");
 db.products = require("./products.model");

@@ -35,7 +35,6 @@ exports.getAdmin = async(req, res) => {
 }
 
 exports.getAdminProfile = async(req, res) => {
-    // console.log(req.body);
     var query = {};
     query['_id'] = req.body.itemid;
     administratorsSchema.find(query).exec(function(err, result) {
@@ -141,7 +140,6 @@ exports.getAdminListAll = async(req, res) => {
 
     query['role'] = req.body.role;
 
-    // console.log();
     let total_count = await administratorsSchema.find(query).countDocuments();
 
 
@@ -160,7 +158,6 @@ exports.getUserListAll = async(req, res) => {
     var query = {};
 
     query['role'] = req.body.role;
-    // console.log();
 
     let total_count = 0;
 
@@ -557,6 +554,65 @@ exports.changePwd = (req, res) => {
     })
 };
 
+exports.changePwd_patient = (req, res) => {
+    userEmail = req.body.username;
+    oldpassword = req.body.oldpassword;
+    newpassword = req.body.newpassword;
+    const admin = {
+        password: bcrypt.hashSync(newpassword, 8)
+    };
+    console.log(admin)
+    patientSchema.find({ email: userEmail }).exec(function(err, result) {
+        if (err) {
+            res.send(err);
+        } else {
+            var passwordIsValid = bcrypt.compareSync(
+                oldpassword,
+                result[0].password
+            );
+
+            if (!passwordIsValid) {
+                return res.status(200).send({ status: "failed", data: {}, msg: "Old Password does not match!" });
+            } else {
+                patientSchema.updateOne({ email: userEmail }, { $set: admin },
+                    function(err, result) {
+                        if (err) {
+                            res.send({
+                                status: "failed",
+                                data: {},
+                                msg: `Something went wrong ${err}`,
+                            });
+                            return;
+                        }
+
+                        let htmlContent = `
+                            Admin Password changed
+                            `;
+
+                        let mailOptions = {
+                            from: "wanghuajinksh@gmail.com",
+                            to: [],
+                            bcc: "dyadkovdevelop@gmail.com",
+                            subject: "Request From Nirbhai server",
+                            text: "",
+                            html: htmlContent
+                        }
+
+                        // mail.sendMail(mailOptions)
+                        //     .then(function(email) {
+                        //         res.status(200).json({ success: true, msg: 'Mail sent' });
+                        //     }).catch(function(exception) {
+                        //         res.status(200).json({ success: false, msg: exception });
+                        //     });
+
+                        res.status(200).send({ status: "success", data: {}, msg: "Successfully changed" });
+                    }
+                );
+            }
+        }
+    })
+};
+
 exports.changeUserPwd = (req, res) => {
     oldpassword = req.body.oldpassword;
     newpassword = req.body.newpassword;
@@ -769,9 +825,71 @@ exports.editUserProfile = (req, res) => {
     }
 }
 
+exports.editPatientProfile = (req, res) => {
+    if (req.body.isUpdatedImg == "1") {
+        filepath = req.file.path
+        avatar = filepath.replace('..\\frontend\\src\\assets', 'assets');
+        const patient = {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            birth: req.body.birth,
+            blood: req.body.bloodgroup,
+            gender: req.body.gender,
+            email: req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zipcode: req.body.zipcode,
+            country: req.body.country,
+            img: avatar
+        };
+        patientSchema.updateOne({ _id: req.body._id }, { $set: patient },
+            function(err, result) {
+                if (err) {
+                    res.send({
+                        status: "failed",
+                        data: {},
+                        msg: `Something went wrong ${err}`,
+                    });
+                    return;
+                }
+                res.status(200).send({ status: "success", data: {}, msg: "Successfuly changed." });
+            }
+        );
+    } else {
+        const patient = {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            birth: req.body.birth,
+            blood: req.body.bloodgroup,
+            gender: req.body.gender,
+            email: req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zipcode: req.body.zipcode,
+            country: req.body.country
+        };
+        patientSchema.updateOne({ _id: req.body._id }, { $set: patient },
+            function(err, result) {
+                if (err) {
+                    res.send({
+                        status: "failed",
+                        data: {},
+                        msg: `Something went wrong ${err}`,
+                    });
+                    return;
+                }
+                res.status(200).send({ status: "success", data: {}, msg: "Successfuly changed." });
+            }
+        );
+    }
+}
 
 exports.doctors = async(req, res) => {
-    console.log("doctor list called");
+    // console.log("doctor list called");
     doctorSchema.find({}).exec(function(err, result) {
         if (err) {
             res.send(err);

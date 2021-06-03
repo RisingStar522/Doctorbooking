@@ -72,6 +72,10 @@ export class CommonServiceService {
     return this.http.post(`${this.SERVER_URL + 'user/editAdminAvatar'}`, data);
   }
 
+  patientChange(data) {
+    return this.http.post(`${this.SERVER_URL + 'user/editPatientProfile'}`, data);
+  }
+
   updateAdminInfo(data) {
     return this.http.post(`${this.SERVER_URL + 'user/updateAdminDetails'}`, data);
   }
@@ -169,6 +173,12 @@ export class CommonServiceService {
 
   getFav() {
     return this.http.get(this.SERVER_URL + 'favourites');
+  }
+
+  getFav_byPatient(id) {
+    var data = {};
+    data = {'_id': id};
+    return this.http.post(this.SERVER_URL + 'getFavourite_byPatients', data);
   }
 
   createFav(params) {

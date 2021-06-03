@@ -54,6 +54,7 @@ app.get("/checkDB", (req, res) => {
 require('./routes/auth.routes')(app);
 require('./routes/appointments.routes')(app);
 require('./routes/prescriptions.routes')(app);
+require('./routes/favourites.routes')(app);
 require('./routes/bills.routes')(app);
 require('./routes/user.routes')(app, upload);
 require('./routes/products.routes')(app, upload);

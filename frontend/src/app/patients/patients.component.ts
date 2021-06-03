@@ -21,6 +21,7 @@ export class PatientsComponent implements OnInit {
     if (
       router.url === '/patients/dashboard' ||
       router.url === '/patients/favourites' ||
+      router.url === '/patients/change' ||
       router.url === '/patients/settings'
     ) {
       this.patientSidebar = true;
@@ -32,6 +33,7 @@ export class PatientsComponent implements OnInit {
         if (
           event.url === '/patients/dashboard' ||
           event.url === '/patients/favourites' ||
+          event.url === '/patients/change' ||
           event.url === '/patients/settings'
         ) {
           this.patientSidebar = true;

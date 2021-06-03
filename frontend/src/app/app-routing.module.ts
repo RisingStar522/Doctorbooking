@@ -68,13 +68,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
-  {
-    path: 'change-password',
-    loadChildren: () =>
-      import('./change-password/change-password.module').then(
-        (m) => m.ChangePasswordModule
-      ),
-  },
+  // {
+  //   path: 'change-password',
+  //   loadChildren: () =>
+  //     import('./patients/change-password/change-password.module').then(
+  //       (m) => m.ChangePasswordModule
+  //     ),
+  // },
   {
     path: 'forgot-password',
     loadChildren: () =>

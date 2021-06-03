@@ -1,21 +1,25 @@
+const { Str } = require('@supercharge/strings/dist/str');
 const mongoose = require('mongoose');
 
 const patientsSchema = new mongoose.Schema({
-    role: String,
-    name: String,
-    age: String,
-    address: String,
-    phone: String,
+    firstname: String,
+    lastname: String,
+    birth: String,
+    blood: String,
+    gender: String,
     email: String,
-    lastvisit: String,
-    paid: String,
-    bloodgroup: String,
-    type: String,
-    img: String,
     password: String,
-    create_at: Date,
-    updateed_at: Date
-
+    phone: String,
+    address: String,
+    city: String,
+    state: String,
+    zipcode: String,
+    country: String,
+    paid: String,
+    img: String,
+    status: String,
+    created_at: String,
+    updated_at: String
 });
 
 const Patients = mongoose.model('Patients', patientsSchema);

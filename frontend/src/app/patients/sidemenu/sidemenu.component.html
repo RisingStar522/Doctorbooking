@@ -2,12 +2,12 @@
     <div class="widget-profile pro-widget-content">
         <div class="profile-info-widget">
             <a href="javascript:void(0)" class="booking-doc-img">
-                <img src="assets/img/patients/patient.jpg" alt="User Image">
+                <img [src]="imageSrc" alt="User Image">
             </a>
             <div class="profile-det-info">
-                <h3>{{userData["name"]}}</h3>
+                <h3>{{userData["firstname"]}} {{userData["lastname"]}}</h3>
                 <div class="patient-details">
-                    <h5><i class="fas fa-birthday-cake"></i>{{userData["age"]}} years</h5>
+                    <h5><i class="fas fa-birthday-cake"></i>{{userData["birth"]}}, {{userData["age"]}} years</h5>
                     <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>{{userData["address"]}}</h5>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li [class.active]="name === 'message'">
-                    <a [routerLink]="'message'">
+                    <a [routerLink]="'message'" target="_blank">
                         <i class="fas fa-comments"></i>
                         <span>Message</span>
                         <small class="unread-msg">23</small>
@@ -41,12 +41,18 @@
                         <span>Profile Settings</span>
                     </a>
                 </li>
-                <li>
-                    <a [routerLink]="'/change-password'">
+                <li [class.active]="name === 'Change password'">
+                    <a (click)="navigate('Change Password')" [routerLink]="'change'">
                         <i class="fas fa-lock"></i>
                         <span>Change Password</span>
                     </a>
                 </li>
+                <!-- <li>
+                    <a [routerLink]="'/change-password'">
+                        <i class="fas fa-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li> -->
                 <li>
                     <a (click)="logout()" style="cursor: pointer;">
                         <i class="fas fa-sign-out-alt"></i>
