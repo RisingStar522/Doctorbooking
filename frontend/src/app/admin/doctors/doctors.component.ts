@@ -22,7 +22,8 @@ export class DoctorsComponent implements OnInit {
   }
 
   getDoctors() {
-    this.commonService.getDoctors().subscribe(
+    let query = [];
+    this.commonService.getDoctors(query).subscribe(
       (res) => {
         this.doctorsList = res;
         $(function() {

@@ -17,11 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./patients/patients.module').then((m) => m.PatientsModule),
   },
-  {
-    path: 'pharmacy',
-    loadChildren: () =>
-      import('./pharmacy/pharmacy.module').then((m) => m.PharmacyModule),
-  },
+  // {
+  //   path: 'pharmacy',
+  //   loadChildren: () =>
+  //     import('./pharmacy/pharmacy.module').then((m) => m.PharmacyModule),
+  // },
   {
     path: 'blank',
     loadChildren: () =>
@@ -123,13 +123,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
-  {
-    path: 'pharmacy-admin',
-    loadChildren: () =>
-      import('./pharmacy-admin/pharmacy-admin.module').then(
-        (m) => m.PharmacyAdminModule
-      ),
-  },
+  // {
+  //   path: 'pharmacy-admin',
+  //   loadChildren: () =>
+  //     import('./pharmacy-admin/pharmacy-admin.module').then(
+  //       (m) => m.PharmacyAdminModule
+  //     ),
+  // },
 ];
 
 @NgModule({

@@ -90,17 +90,17 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  getDoctors() {
-    this.commonService.getDoctors().subscribe((res) => {
-      this.doctors = res;
-    });
-  }
+  // getDoctors() {
+  //   this.commonService.getDoctors().subscribe((res) => {
+  //     this.doctors = res;
+  //   });
+  // }
 
-  getpatients() {
-    this.commonService.getpatients().subscribe((res) => {
-      this.patients = res;
-    });
-  }
+  // getpatients() {
+  //   this.commonService.getpatients().subscribe((res) => {
+  //     this.patients = res;
+  //   });
+  // }
 
 
 }

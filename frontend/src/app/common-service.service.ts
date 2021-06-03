@@ -99,8 +99,10 @@ export class CommonServiceService {
     return this.http.post(`${this.SERVER_URL + 'specialties/deleteSpecialties'}`, data);
   }
 
-  getDoctors() {
-    return this.http.get(this.SERVER_URL + 'user/doctors');
+  getDoctors(param) {
+    let query = [];
+    query = param;
+    return this.http.post(`${this.SERVER_URL + 'user/doctors'}`, query);
   }
 
   getDoctorDetails(id) {

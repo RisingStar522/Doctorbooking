@@ -316,7 +316,8 @@ export class HomeComponent implements OnInit {
   }
 
   getDoctors() {
-    this.commonService.getDoctors().subscribe((res) => {
+    let query = [];
+    this.commonService.getDoctors(query).subscribe((res) => {
       this.doctors = res;
       this.slidepage = {
         slidesToShow: 5,

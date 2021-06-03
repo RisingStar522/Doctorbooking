@@ -37,12 +37,13 @@ export class SearchDoctorComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.getDoctors();
+    let query = {};
+    this.getDoctors(query);
     this.getspeciality();
   }
 
-  getDoctors() {
-    this.commonService.getDoctors().subscribe(res => {
+  getDoctors(query) {
+    this.commonService.getDoctors(query).subscribe(res => {
       this.doctors = res;
     });
   }
@@ -65,7 +66,8 @@ export class SearchDoctorComponent implements OnInit {
     if (this.type && this.speciality) {
       this.doctors = this.doctors.filter(a => a.type === this.type && a.speciality === this.speciality);
     } else {
-      this.getDoctors();
+      let query = {};
+      this.getDoctors(query);
     }
 
   }
