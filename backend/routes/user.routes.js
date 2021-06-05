@@ -63,7 +63,7 @@ module.exports = function(app, upload) {
 
     app.post("/api/user/changePwd_patient", userController.changePwd_patient);
 
-    app.get("/api/user/doctors", userController.doctors);
+    app.post("/api/user/doctors", userController.doctors);
 
     app.get("/api/user/patients", userController.patients);
 

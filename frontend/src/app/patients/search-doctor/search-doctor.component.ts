@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
   styleUrls: ['./search-doctor.component.css']
 })
 export class SearchDoctorComponent implements OnInit {
+  allDoctors:any =[];
   doctors: any = [];
   specialityList: any = [];
   type;
@@ -45,6 +46,7 @@ export class SearchDoctorComponent implements OnInit {
   getDoctors(query) {
     this.commonService.getDoctors(query).subscribe(res => {
       this.doctors = res;
+      this.allDoctors = res;
     });
   }
 
@@ -62,23 +64,14 @@ export class SearchDoctorComponent implements OnInit {
     }
   }
 
-  search() {
-    if (this.type && this.speciality) {
-      this.doctors = this.doctors.filter(a => a.type === this.type && a.speciality === this.speciality);
-    } else {
-      let query = {};
-      this.getDoctors(query);
-    }
-
-  }
-
+  
   checkSpeciality(event) {
-    if (event.target.checked) {
+    // if (event.target.checked) {
       this.speciality = event.target.value;
-    } else {
-      this.speciality = '';
-    }
-
+    // } else {
+      // this.speciality = '';
+    // }
+    
     var filter = this.specialityList.filter(a => a.speciality === event.target.value);
     if (filter.length != 0) {
       filter[0]['checked'] = true;
@@ -89,13 +82,21 @@ export class SearchDoctorComponent implements OnInit {
       }
     });
   }
-
+  
+  search() {
+    if (this.type || this.speciality) {
+      this.doctors = this.allDoctors.filter(a => a.type === this.type || a.speciality === this.speciality);
+    } else {
+      let query = {};
+      this.getDoctors(query);
+    }
+  }
   bookAppointment(id) {
     // if((localStorage.getItem('auth') === 'true') && (localStorage.getItem('patient') === 'true')) {
-    this.router.navigateByUrl('/patients/booking?id=' + id);
-    // } else {
-    //   this.router.navigate(['/']);
-    // }
-  }
+      this.router.navigateByUrl('/patients/booking?id=' + id);
+      // } else {
+        //   this.router.navigate(['/']);
+        // }
+      }
 
 }

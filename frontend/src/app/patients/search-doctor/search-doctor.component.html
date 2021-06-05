@@ -60,8 +60,7 @@
                             </div>
                             <div>
                                 <label class="custom_check">
-                                    <input type="checkbox" name="gender_type" value="Female" [checked]="type === 'Female'"
-                                            (click)="checkType($event)">
+                                    <input type="checkbox" (click)="checkType($event)" name="gender_type" value="Female" [checked]="type === 'Female'">
                                     <span class="checkmark"></span> Female Doctor
                                 </label>
                             </div>
@@ -70,8 +69,7 @@
                             <h4>Select Specialist</h4>
                             <div *ngFor="let specialit of specialityList">
                                 <label class="custom_check">
-                                    <input type="checkbox" (click)="checkSpeciality($event)" name="select_specialist"
-                                            [value]="specialit.speciality" [checked]="specialit.checked">
+                                    <input type="checkbox" (click)="checkSpeciality($event)" name="select_specialist" [value]="specialit.speciality" [checked]="specialit.checked">
                                     <span class="checkmark"></span> {{specialit.speciality}}
                                 </label>
                             </div>
@@ -136,7 +134,7 @@
                                 </div>
                                 <div class="clinic-booking">
                                     <a class="view-pro-btn" style="cursor: pointer;" [routerLink]="'/patients/doctor-profile'" [queryParams]="{id: doctor.id}">View Profile</a>
-                                    <a class="apt-btn" style="cursor: pointer;" (click)="bookAppointment(doctor.id)">Book Appointment</a>
+                                    <a class="apt-btn" style="cursor: pointer;" (click)="bookAppointment(doctor._id)">Book Appointment</a>
                                 </div>
                             </div>
                         </div>

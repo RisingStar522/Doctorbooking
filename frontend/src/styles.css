@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /*html, body { height: 100%; }
 body { margin: 0;     font-family: "Poppins",sans-serif; }*/
+
+
 /*@font-face {
     font-family: 'FontAwesome';
     src: url('./assets/admin/fonts/fontawesome-webfont.eot?v=4.0.3');
@@ -9,22 +12,23 @@ body { margin: 0;     font-family: "Poppins",sans-serif; }*/
     font-weight: normal;
     font-style: normal;
   }*/
+
 .angular-tag.default-tag {
-  background-color: #009efb !important
+    background-color: #009efb !important
 }
 
 .angular-tags-input {
-  border-color: #dcdcdc;
-  box-shadow: inherit;
-  width: 100%;
-  border-radius: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 4px 6px;
-  color: #555;
-  vertical-align: middle;
-  max-width: 100%;
-  line-height: 22px;
-  cursor: text;
+    border-color: #dcdcdc;
+    box-shadow: inherit;
+    width: 100%;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 4px 6px;
+    color: #555;
+    vertical-align: middle;
+    max-width: 100%;
+    line-height: 22px;
+    cursor: text;
 }
